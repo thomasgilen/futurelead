@@ -295,6 +295,19 @@ body {
   background: #f7f3ff;
 }
 
+.tertiary-btn {
+  background: transparent;
+  border: 1px dashed #e2d9ff;
+  color: #5a4a71;
+  font-weight: 500;
+}
+
+.tertiary-btn:hover {
+  background: #f4efff;
+  border-style: solid;
+}
+
+
 /* =========
    Hero-kort (citat)
    ========= */
