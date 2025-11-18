@@ -3,19 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ditt ledarskapsvarumärke</title>
-  <meta name="description" content="Hemsida om modernt, tillitsbaserat ledarskap.">
+  <title>Futurelead – Ledarskap byggt på tillit</title>
+  <meta name="description" content="Futurelead hjälper chefer och team att bygga tillitsbaserat ledarskap, psykologisk trygghet och hållbara resultat.">
+  
+  <!-- Modernt typsnitt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-soft: #111827;
+      --bg: #020617;
       --accent: #fbbf24;
       --accent-soft: #f59e0b;
+      --accent-alt: #38bdf8;
       --text-main: #f9fafb;
       --text-muted: #9ca3af;
-      --card: #020617;
+      --border-subtle: rgba(148, 163, 184, 0.3);
+      --card: rgba(15, 23, 42, 0.96);
       --radius-lg: 18px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.55);
+      --shadow-soft: 0 22px 50px rgba(15, 23, 42, 0.75);
       --max-width: 1080px;
     }
 
@@ -23,10 +30,17 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(251, 191, 36, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 10%, rgba(56, 189, 248, 0.12), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(129, 140, 248, 0.18), #020617 65%);
       color: var(--text-main);
       line-height: 1.6;
     }
@@ -39,6 +53,10 @@
     img {
       max-width: 100%;
       display: block;
+    }
+
+    button {
+      font-family: inherit;
     }
 
     /* Layout */
@@ -54,8 +72,8 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(18px);
-      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.65));
-      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.7));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
 
     .nav {
@@ -75,15 +93,15 @@
     }
 
     .brand-mark {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
       background: radial-gradient(circle at 30% 20%, #fef9c3, #fbbf24, #c2410c);
-      box-shadow: 0 12px 30px rgba(248, 250, 252, 0.15);
+      box-shadow: 0 12px 30px rgba(248, 250, 252, 0.18);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
       color: #111827;
     }
@@ -91,7 +109,7 @@
     .brand-text-main {
       font-size: 16px;
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
@@ -103,7 +121,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 22px;
       font-size: 14px;
     }
 
@@ -119,21 +137,17 @@
     }
 
     .nav-cta {
-      padding: 8px 16px;
-      font-size: 14px;
+      padding: 7px 14px;
+      font-size: 12px;
       border-radius: 999px;
-      border: 1px solid rgba(249, 250, 251, 0.2);
-      background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.15), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(249, 250, 251, 0.22);
+      background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.14), rgba(15, 23, 42, 0.95));
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .nav-cta span {
-      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       color: var(--text-muted);
     }
 
@@ -144,25 +158,24 @@
     .section {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 36px 20px;
+      padding: 64px 20px;
     }
 
     /* Hero */
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 32px;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 36px;
       align-items: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
+      padding-top: 26px;
     }
 
     .hero-tag {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 4px 10px;
+      padding: 4px 11px;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.9);
       border: 1px solid rgba(148, 163, 184, 0.5);
@@ -170,7 +183,7 @@
       text-transform: uppercase;
       letter-spacing: 0.13em;
       color: var(--text-muted);
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .hero-tag-dot {
@@ -178,13 +191,14 @@
       height: 7px;
       border-radius: 999px;
       background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.35);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.32);
     }
 
     .hero-title {
-      font-size: clamp(32px, 4vw, 40px);
-      line-height: 1.1;
-      margin: 0 0 16px;
+      font-size: clamp(40px, 5vw, 54px);
+      line-height: 1.02;
+      margin: 0 0 18px;
+      letter-spacing: -0.03em;
     }
 
     .hero-title span {
@@ -194,13 +208,13 @@
     .hero-subtitle {
       font-size: 15px;
       color: var(--text-muted);
-      max-width: 540px;
-      margin-bottom: 20px;
+      max-width: 560px;
+      margin-bottom: 22px;
     }
 
     .hero-bullets {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: 10px;
       margin-bottom: 22px;
     }
@@ -215,34 +229,35 @@
 
     .hero-bullet-icon {
       font-size: 16px;
+      margin-top: 1px;
     }
 
     .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .btn-primary {
       border-radius: 999px;
       border: none;
-      padding: 10px 20px;
+      padding: 11px 22px;
       font-size: 14px;
       font-weight: 500;
       background: linear-gradient(135deg, var(--accent), var(--accent-soft));
       color: #111827;
       cursor: pointer;
-      box-shadow: 0 16px 35px rgba(245, 158, 11, 0.35);
+      box-shadow: 0 20px 45px rgba(245, 158, 11, 0.45);
     }
 
     .btn-secondary {
       border-radius: 999px;
-      padding: 9px 18px;
+      padding: 10px 20px;
       font-size: 13px;
       border: 1px solid rgba(148, 163, 184, 0.6);
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(15, 23, 42, 0.78);
       color: var(--text-muted);
       cursor: pointer;
     }
@@ -256,7 +271,7 @@
 
     .hero-card {
       border-radius: 24px;
-      background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.16), rgba(15, 23, 42, 0.96));
+      background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.16), rgba(15, 23, 42, 0.98));
       border: 1px solid rgba(148, 163, 184, 0.4);
       padding: 16px 16px 14px;
       box-shadow: var(--shadow-soft);
@@ -265,7 +280,7 @@
     .hero-card-inner {
       border-radius: 18px;
       padding: 18px;
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.6));
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.7));
       border: 1px solid rgba(15, 23, 42, 0.7);
     }
 
@@ -302,6 +317,8 @@
       font-size: 11px;
       color: var(--text-muted);
       margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
     }
 
     .metric-value {
@@ -336,12 +353,13 @@
       justify-content: space-between;
       align-items: flex-end;
       gap: 16px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .section-title {
-      font-size: 22px;
+      font-size: 24px;
       margin: 0 0 4px;
+      letter-spacing: -0.02em;
     }
 
     .section-subtitle {
@@ -362,7 +380,7 @@
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.6);
       color: var(--text-muted);
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(15, 23, 42, 0.78);
     }
 
     .cards {
@@ -374,9 +392,17 @@
     .card {
       padding: 16px 16px 14px;
       border-radius: var(--radius-lg);
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.5);
+      background: var(--card);
+      border: 1px solid rgba(31, 41, 55, 0.92);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.7);
+      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out, background 0.18s ease-out;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 55px rgba(15, 23, 42, 0.9);
+      border-color: rgba(148, 163, 184, 0.9);
+      background: rgba(15, 23, 42, 0.98);
     }
 
     .card-label {
@@ -448,8 +474,8 @@
     .about-card {
       padding: 16px 16px 14px;
       border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top, rgba(59, 130, 246, 0.25), rgba(15, 23, 42, 0.95));
-      border: 1px solid rgba(59, 130, 246, 0.4);
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.28), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(56, 189, 248, 0.55);
       box-shadow: var(--shadow-soft);
       font-size: 13px;
       color: var(--text-muted);
@@ -478,8 +504,8 @@
       font-size: 11px;
       padding: 3px 8px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(191, 219, 254, 0.6);
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(191, 219, 254, 0.7);
     }
 
     /* Section: Kontakt */
@@ -514,9 +540,9 @@
     .contact-form {
       padding: 16px 16px 14px;
       border-radius: var(--radius-lg);
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.6);
+      background: var(--card);
+      border: 1px solid rgba(31, 41, 55, 0.92);
+      box-shadow: 0 22px 55px rgba(15, 23, 42, 0.85);
       font-size: 13px;
     }
 
@@ -536,8 +562,8 @@
       width: 100%;
       padding: 8px 10px;
       border-radius: 10px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.98);
       color: var(--text-main);
       font-size: 13px;
       font-family: inherit;
@@ -561,6 +587,31 @@
       text-align: center;
     }
 
+    /* Transitions / microinteractions */
+
+    button,
+    .card,
+    .nav-cta {
+      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, background 0.18s ease-out, border-color 0.18s ease-out, color 0.18s ease-out;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 24px 55px rgba(245, 158, 11, 0.7);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-1px);
+      border-color: rgba(148, 163, 184, 0.9);
+      color: var(--text-main);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      color: var(--text-main);
+      border-color: rgba(249, 250, 251, 0.4);
+    }
+
     /* Responsivitet */
 
     @media (max-width: 880px) {
@@ -571,7 +622,7 @@
       }
 
       .hero {
-        padding-top: 26px;
+        padding-top: 16px;
       }
 
       .hero-card {
@@ -590,6 +641,7 @@
     @media (max-width: 640px) {
       .section {
         padding-inline: 16px;
+        padding-block: 44px;
       }
 
       .hero {
@@ -613,10 +665,10 @@
     <header>
       <nav class="nav">
         <div class="nav-left">
-          <div class="brand-mark">T</div>
+          <div class="brand-mark">F</div>
           <div>
-            <div class="brand-text-main">Ditt varumärke</div>
-            <div class="brand-text-sub">Tillitsbaserat ledarskap</div>
+            <div class="brand-text-main">Futurelead</div>
+            <div class="brand-text-sub">Lead with trust</div>
           </div>
         </div>
         <div class="nav-links">
@@ -624,8 +676,7 @@
           <a href="#ommig">Om mig</a>
           <a href="#kontakt">Kontakt</a>
           <button class="nav-cta" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
-            <div>För ledare & team</div>
-            <span>Boka samtal</span>
+            Boka samtal
           </button>
         </div>
       </nav>
@@ -638,29 +689,28 @@
           <div>
             <div class="hero-tag">
               <div class="hero-tag-dot"></div>
-              <div>Ledarskap byggt på tillit</div>
+              <div>Tillitsbaserat ledarskap i praktiken</div>
             </div>
             <h1 class="hero-title">
-              Mindre kontroll. <span>Mer ansvar.</span><br />
-              Ledarskap som håller i vardagen.
+              Mindre kontroll.<br />
+              <span>Mer ansvar.</span>
             </h1>
             <p class="hero-subtitle">
-              Jag hjälper chefer och team att bygga psykologisk trygghet, tydlighet och ansvarstagande – utan floskler.
-              Forskning i ryggen, vardagen i fokus.
+              Futurelead hjälper chefer och team att bygga psykologisk trygghet, tydlighet och ansvarstagande – med forskning i ryggen och vardagen som utgångspunkt.
             </p>
 
             <div class="hero-bullets">
               <div class="hero-bullet">
                 <div class="hero-bullet-icon">▸</div>
-                <div>Workshops om psykologisk trygghet och modernt medarbetarskap.</div>
+                <div>Workshops där ni översätter begrepp som “psykologisk trygghet” till konkret beteende i vardagen.</div>
               </div>
               <div class="hero-bullet">
                 <div class="hero-bullet-icon">▸</div>
-                <div>Stöd till ledningsgrupper som vill öka engagemang och ansvar.</div>
+                <div>Stöd till ledningsgrupper som vill ta ägandet för kultur, engagemang och medarbetarskap på riktigt.</div>
               </div>
               <div class="hero-bullet">
                 <div class="hero-bullet-icon">▸</div>
-                <div>Föreläsningar där forskning möter ärliga berättelser från verkligheten.</div>
+                <div>Föreläsningar där moderna studier möter ärliga berättelser från verkliga förändringsresor.</div>
               </div>
             </div>
 
@@ -673,7 +723,7 @@
               </button>
             </div>
             <div class="hero-caption">
-              Inga färdiga powerpoints-svar. Vi utgår från er vardag, era hinder och era mål.
+              Inga färdiga mallar. Vi utgår från er verklighet, era dilemman och era mål – och bygger vidare där ni står.
             </div>
           </div>
 
@@ -682,34 +732,34 @@
             <div class="hero-card-inner">
               <div class="hero-card-header">
                 <div>
-                  <div class="hero-card-title">När kulturen börjar ändras</div>
-                  <div>Små vardagssignaler att hålla koll på</div>
+                  <div class="hero-card-title">När kulturen faktiskt ändras</div>
+                  <div>Små signaler att hålla koll på i vardagen</div>
                 </div>
                 <div style="font-size:10px; text-align:right;">
-                  Baserat på<br />aktuella studier
+                  Futurelead<br />inspired by research
                 </div>
               </div>
 
               <div class="hero-metrics">
                 <div class="metric">
-                  <div class="metric-label">Återkoppling uppåt</div>
+                  <div class="metric-label">Ärlig feedback</div>
                   <div class="metric-value">+47%</div>
                   <div class="metric-note">
-                    Team där chefer aktivt ber om ärlig feedback ser ofta kraftigt ökat engagemang.
+                    Team där chefer aktivt ber om uppriktig återkoppling ser ofta tydligt ökat engagemang.
                   </div>
                 </div>
                 <div class="metric">
                   <div class="metric-label">Felrädsla</div>
                   <div class="metric-value">−32%</div>
                   <div class="metric-note">
-                    När misstag ses som lärande ökar både innovationstakt och ansvarstagande.
+                    När misstag ses som lärande ökar både innovationsförmåga och ansvarstagande.
                   </div>
                 </div>
               </div>
 
               <div class="hero-quote">
                 <strong>“Trygghet och ansvar är inte motsatser.”</strong><br />
-                De bästa organisationerna lyckas kombinera höga förväntningar med hög omsorg.
+                De mest hållbara organisationerna kombinerar höga förväntningar med hög omsorg om människorna som ska leverera.
               </div>
             </div>
           </aside>
@@ -722,47 +772,48 @@
           <div>
             <h2 class="section-title">Tjänster</h2>
             <p class="section-subtitle">
-              Upplägg som går att anpassa efter er vardag – oavsett om ni är ett mindre team eller en större organisation.
+              Upplägg som går att anpassa efter er verklighet – oavsett om ni är ett mindre team eller en större organisation i förändring.
             </p>
           </div>
           <div class="chips">
             <span class="chip">Forskning + praktik</span>
             <span class="chip">Psykologisk trygghet</span>
             <span class="chip">Medarbetarskap</span>
+            <span class="chip">Kultur & engagemang</span>
           </div>
         </div>
 
         <div class="cards">
           <article class="card">
             <div class="card-label">Workshop</div>
-            <h3 class="card-title">Bygg psykologisk trygghet på riktigt</h3>
+            <h3 class="card-title">Psykologisk trygghet på riktigt</h3>
             <p class="card-text">
-              En praktisk halv- eller heldag där vi går från begrepp till konkret beteende: vad ni ska börja, sluta och fortsätta göra i vardagen.
+              En praktisk halv- eller heldag där vi går från ord till handling: vilka beteenden ni behöver stärka, tona ned eller sluta med för att få mod och ansvar att växa.
             </p>
             <div class="card-meta">
-              Passar: Ledningsgrupper & team som vill öka öppenhet, mod och ansvar.
+              Passar: Ledningsgrupper & team som vill mer än bara prata om kultur.
             </div>
           </article>
 
           <article class="card">
             <div class="card-label">Föreläsning</div>
-            <h3 class="card-title">Engagemang bortom medarbetarundersökningar</h3>
+            <h3 class="card-title">Engagemang bortom enkätresultat</h3>
             <p class="card-text">
-              En ärlig föreläsning om kultur, ledarskap och medarbetarskap – med både forskning och berättelser från verkliga förändringsresor.
+              En ärlig föreläsning om kultur, ledarskap och medarbetarskap – där vi kopplar forskning till konkreta exempel från vardagen, både när det gått bra och när det gjort ont.
             </p>
             <div class="card-meta">
-              Format: 30–60 min + dialog/frågor.
+              Format: 30–60 min + tid för dialog och frågor.
             </div>
           </article>
 
           <article class="card">
-            <div class="card-label">Samtal</div>
-            <h3 class="card-title">Stöd till chefer i förändring</h3>
+            <div class="card-label">Chefsstöd</div>
+            <h3 class="card-title">Leda i förändring och motvind</h3>
             <p class="card-text">
-              Individuella samtal för dig som leder i motvind, står i ett skifte eller vill utveckla ditt ledarskap mot en VD-roll.
+              Individuella samtal för dig som leder när det blåser, står i ett skifte eller vill ta nästa steg mot en VD- eller C-nivå – utan att tappa fotfästet i människorna.
             </p>
             <div class="card-meta">
-              Fokus: Beslut, mod, gränsdragning och att leda med både hjärta och hjärna.
+              Fokus: Beslut, mod, gränser och att stå stadigt i värderingar.
             </div>
           </article>
         </div>
@@ -772,9 +823,9 @@
       <section class="section" id="ommig">
         <div class="section-header">
           <div>
-            <h2 class="section-title">Om mig</h2>
+            <h2 class="section-title">Om Futurelead</h2>
             <p class="section-subtitle">
-              Här skriver du kort om din bakgrund, varför du brinner för ledarskap och vad som gör din approach unik.
+              Futurelead handlar om att skapa ledarskap och medarbetarskap som faktiskt håller – i vardagen, i förändring och när det är som tuffast.
             </p>
           </div>
         </div>
@@ -782,33 +833,33 @@
         <div class="about">
           <div class="about-text">
             <p>
-              Skriv några stycken om din resa: hur du kom in i ledarskap, vilken typ av kultur du tror på och vad du aldrig kompromissar med.
+              Här kan du berätta kort om din resa: hur du kom in i ledarskap, vilka erfarenheter som format dig och varför du valt att arbeta med tillit, tydlighet och psykologisk trygghet.
             </p>
             <p>
-              Knyt gärna an till konkreta erfarenheter: att ta över efter en kris, bygga tillit i ett skeptiskt team, eller förflytta fokus från kontroll
-              till ansvar.
+              Du kan knyta an till konkreta situationer: att ta över efter en kris, att bygga upp förtroende där det saknats, eller hur ni vänt en kultur genom att börja i vardagens beteenden – inte i nya slogans.
             </p>
             <ul class="about-list">
-              <li><span>✓</span> Forskning som grund, inte som dekoration.</li>
-              <li><span>✓</span> Trygghet + tydliga krav – inte antingen eller.</li>
-              <li><span>✓</span> Alltid kopplat till er vardag, inte generella exempel.</li>
+              <li><span>✓</span> Forskning som grund – men alltid översatt till verkliga beteenden.</li>
+              <li><span>✓</span> Trygghet och tydliga krav som två sidor av samma mynt.</li>
+              <li><span>✓</span> Fokus på det ni kan påverka i morgon, inte bara långsiktiga “visioner”.</li>
             </ul>
             <div class="about-highlight">
-              För mig handlar ledarskap om att göra det enkelt att göra rätt – inte att styra varje detalj.
+              För Futurelead handlar ledarskap om att göra det lättare att ta ansvar – inte om att kontrollera varje steg.
             </div>
           </div>
 
           <aside class="about-card">
-            <h3>Exempel på områden jag ofta jobbar med</h3>
+            <h3>Exempel på teman Futurelead ofta jobbar med</h3>
             <p>
-              Du kan justera listan nedan så den speglar de teman du vill vara känd för.
+              Justera listan så den speglar de områden du vill vara särskilt förknippad med.
             </p>
             <div class="about-pill-row">
               <div class="about-pill">Psykologisk trygghet i team</div>
-              <div class="about-pill">Ledarskap efter en kris</div>
+              <div class="about-pill">Kulturförändring efter en kris</div>
               <div class="about-pill">Engagemang & medarbetarskap</div>
               <div class="about-pill">Feedback & svåra samtal</div>
               <div class="about-pill">Förflyttning till VD-/C-nivå</div>
+              <div class="about-pill">Ledarskap i säsongsverksamhet</div>
             </div>
           </aside>
         </div>
@@ -820,7 +871,7 @@
           <div>
             <h2 class="section-title">Kontakt</h2>
             <p class="section-subtitle">
-              Fyll i formuläret eller maila mig direkt om du vill boka föreläsning, workshop eller bara ta ett första förutsättningslöst samtal.
+              Hör av dig om du vill boka föreläsning, workshop, chefsstöd – eller bara börja med ett nyfiket, förutsättningslöst samtal.
             </p>
           </div>
         </div>
@@ -828,17 +879,17 @@
         <div class="contact">
           <div class="contact-info">
             <div class="contact-highlight">
-              Första steget är ofta ett enkelt samtal – utan förpliktelser.
+              Första steget är ofta ett enkelt samtal – utan krav på att bestämma allt direkt.
             </div>
             <p>
-              Här kan du lägga in din mailadress, LinkedIn och eventuellt telefonnummer. Håll det personligt men tydligt.
+              Här lägger du in dina riktiga kontaktuppgifter. Håll det personligt men tydligt, så blir det enkelt att ta kontakt.
             </p>
             <p>
-              <strong>E-post:</strong> <a href="mailto:du@dinadress.se">du@dinadress.se</a><br />
+              <strong>E-post:</strong> <a href="mailto:du@futurelead.se">du@futurelead.se</a><br />
               <strong>LinkedIn:</strong> <a href="#" target="_blank" rel="noopener">Din LinkedIn-profil</a>
             </p>
             <p class="contact-meta">
-              Jag återkommer normalt inom 1–2 arbetsdagar. Vill du boka ett specifikt datum – skriv det gärna i meddelandet.
+              Jag försöker alltid återkomma inom 1–2 arbetsdagar. Har du ett specifikt datum eller en tidsram – skriv gärna det i meddelandet.
             </p>
           </div>
 
@@ -857,12 +908,12 @@
             </div>
             <div class="contact-form-row">
               <label for="meddelande">Vad vill du utforska?</label>
-              <textarea id="meddelande" name="meddelande" placeholder="Beskriv kort ditt behov eller era utmaningar."></textarea>
+              <textarea id="meddelande" name="meddelande" placeholder="Beskriv kort ditt behov, er situation eller vilka frågor du bär på."></textarea>
             </div>
             <div class="contact-form-row">
               <button type="submit" class="btn-primary">Skicka förfrågan</button>
               <div>
-                <small>Detta formulär är just nu bara design – för att göra det aktivt behöver du koppla det till t.ex. ett mailformulär.</small>
+                <small>Formuläret är just nu endast design. För att göra det aktivt behöver du koppla det till t.ex. ett mailformulär eller en tredjepartstjänst.</small>
               </div>
             </div>
           </form>
@@ -871,14 +922,13 @@
     </main>
 
     <footer>
-      &copy; <span id="year"></span> Ditt varumärke inom ledarskap. Byggt på tillit, tydlighet och ansvar.
+      &copy; <span id="year"></span> Futurelead. Ledarskap byggt på tillit, tydlighet och ansvar.
     </footer>
   </div>
 
   <script>
-    // Sätter årtal automatiskt i footern
+    // Sätt årtal automatiskt i footern
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
