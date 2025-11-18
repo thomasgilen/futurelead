@@ -118,6 +118,11 @@ body {
   transition: width 0.22s ease;
 }
 
+/* aktiv länk vid scroll */
+.nav-link.active::after {
+  width: 100%;
+}
+
 .nav-link:hover::after {
   width: 100%;
 }
@@ -215,6 +220,19 @@ body {
 
 .section-body p {
   margin: 0 0 1rem;
+}
+
+/* Reveal-animation (Intersection Observer) */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* =========
