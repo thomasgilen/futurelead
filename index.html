@@ -1,1066 +1,201 @@
- <!DOCTYPE html>
- <html lang="sv">
- <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <title>Futurelead – Lead with Trust</title>
-   <meta name="description" content="Futurelead hjälper ledare och team att bygga tillitsbaserat ledarskap, psykologisk trygghet och hållbara resultat.">
- 
-   <!-- Modernt typsnitt -->
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
--  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
- 
--  <style>
--    :root {
--      --bg: #020617;
--      --accent: #fbbf24;
--      --accent-soft: #f59e0b;
--      --accent-alt: #38bdf8;
--      --text-main: #f9fafb;
--      --text-muted: #9ca3af;
--      --border-subtle: rgba(148, 163, 184, 0.3);
--      --card: rgba(15, 23, 42, 0.96);
--      --radius-lg: 18px;
--      --shadow-soft: 0 22px 50px rgba(15, 23, 42, 0.75);
--      --max-width: 1120px;
--    }
--
--    * {
--      box-sizing: border-box;
--    }
--
--    html {
--      scroll-behavior: smooth;
--    }
--
--    body {
--      margin: 0;
--      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
--      background:
--        radial-gradient(circle at 0% 0%, rgba(251, 191, 36, 0.12), transparent 55%),
--        radial-gradient(circle at 100% 10%, rgba(56, 189, 248, 0.12), transparent 55%),
--        radial-gradient(circle at 50% 100%, rgba(129, 140, 248, 0.2), #020617 65%);
--      color: var(--text-main);
--      line-height: 1.6;
--    }
--
--    a {
--      color: inherit;
--      text-decoration: none;
--    }
--
--    img {
--      max-width: 100%;
--      display: block;
--    }
--
--    button {
--      font-family: inherit;
--    }
--
--    .page {
--      min-height: 100vh;
--      display: flex;
--      flex-direction: column;
--    }
--
--    header {
--      position: sticky;
--      top: 0;
--      z-index: 20;
--      backdrop-filter: blur(18px);
--      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.7));
--      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
--    }
--
--    .nav {
--      max-width: var(--max-width);
--      margin: 0 auto;
--      padding: 14px 20px;
--      display: flex;
--      align-items: center;
--      justify-content: space-between;
--      gap: 16px;
--    }
--
--    .nav-left {
--      display: flex;
--      align-items: center;
--      gap: 10px;
--    }
--
--    .brand-mark {
--      width: 34px;
--      height: 34px;
--      border-radius: 999px;
--      background: radial-gradient(circle at 30% 20%, #fef9c3, #fbbf24, #c2410c);
--      box-shadow: 0 12px 30px rgba(248, 250, 252, 0.18);
--      display: flex;
--      align-items: center;
--      justify-content: center;
--      font-size: 18px;
--      font-weight: 700;
--      color: #111827;
--    }
--
--    .brand-text-main {
--      font-size: 16px;
--      font-weight: 600;
--      letter-spacing: 0.12em;
--      text-transform: uppercase;
--    }
--
--    .brand-text-sub {
--      font-size: 12px;
--      color: var(--text-muted);
--    }
--
--    .nav-links {
--      display: flex;
--      align-items: center;
--      gap: 22px;
--      font-size: 14px;
--    }
--
--    .nav-links a {
--      color: var(--text-muted);
--      padding-bottom: 2px;
--      border-bottom: 1px solid transparent;
--    }
--
--    .nav-links a:hover {
--      color: var(--text-main);
--      border-bottom-color: rgba(248, 250, 252, 0.35);
--    }
--
--    .nav-cta {
--      padding: 7px 14px;
--      font-size: 12px;
--      border-radius: 999px;
--      border: 1px solid rgba(249, 250, 251, 0.22);
--      background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.14), rgba(15, 23, 42, 0.95));
--      cursor: pointer;
--      display: inline-flex;
--      align-items: center;
--      gap: 6px;
--      text-transform: uppercase;
--      letter-spacing: 0.12em;
--      color: var(--text-muted);
--    }
--
--    main {
--      flex: 1;
--    }
--
--    .section {
--      max-width: var(--max-width);
--      margin: 0 auto;
--      padding: 56px 20px;
--    }
--
--    .section-tight {
--      padding-top: 28px;
--      padding-bottom: 56px;
--    }
--
--    .section-header {
--      display: flex;
--      justify-content: space-between;
--      align-items: flex-end;
--      gap: 16px;
--      margin-bottom: 20px;
--    }
--
--    .section-title {
--      font-size: 24px;
--      margin: 0 0 4px;
--      letter-spacing: -0.02em;
--    }
--
--    .section-subtitle {
--      font-size: 13px;
--      color: var(--text-muted);
--      max-width: 460px;
--    }
--
--    /* HERO */
--
--    .hero {
--      display: grid;
--      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
--      gap: 36px;
--      align-items: center;
--      padding-top: 26px;
--    }
--
--    .hero-tag {
--      display: inline-flex;
--      align-items: center;
--      gap: 10px;
--      padding: 4px 11px;
--      border-radius: 999px;
--      background: rgba(15, 23, 42, 0.9);
--      border: 1px solid rgba(148, 163, 184, 0.5);
--      font-size: 11px;
--      text-transform: uppercase;
--      letter-spacing: 0.13em;
--      color: var(--text-muted);
--      margin-bottom: 18px;
--    }
--
--    .hero-tag-dot {
--      width: 7px;
--      height: 7px;
--      border-radius: 999px;
--      background: #22c55e;
--      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.32);
--    }
--
--    .hero-title {
--      font-size: clamp(40px, 5vw, 54px);
--      line-height: 1.02;
--      margin: 0 0 18px;
--      letter-spacing: -0.03em;
--    }
--
--    .hero-title span {
--      color: var(--accent);
--    }
--
--    .hero-subtitle {
--      font-size: 15px;
--      color: var(--text-muted);
--      max-width: 560px;
--      margin-bottom: 22px;
--    }
--
--    .hero-why {
--      font-size: 13px;
--      color: var(--text-muted);
--      max-width: 540px;
--      margin-bottom: 20px;
--      border-left: 2px solid rgba(148, 163, 184, 0.6);
--      padding-left: 10px;
--    }
--
--    .hero-cta-row {
--      display: flex;
--      flex-wrap: wrap;
--      gap: 12px;
--      align-items: center;
--      margin-bottom: 10px;
--    }
--
--    .hero-caption {
--      font-size: 12px;
--      color: var(--text-muted);
--    }
--
--    .btn-primary {
--      border-radius: 999px;
--      border: none;
--      padding: 11px 22px;
--      font-size: 14px;
--      font-weight: 500;
--      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
--      color: #111827;
--      cursor: pointer;
--      box-shadow: 0 20px 45px rgba(245, 158, 11, 0.45);
--    }
--
--    .btn-secondary {
--      border-radius: 999px;
--      padding: 10px 20px;
--      font-size: 13px;
--      border: 1px solid rgba(148, 163, 184, 0.6);
--      background: rgba(15, 23, 42, 0.78);
--      color: var(--text-muted);
--      cursor: pointer;
--    }
--
--    .hero-card {
--      border-radius: 24px;
--      background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.16), rgba(15, 23, 42, 0.98));
--      border: 1px solid rgba(148, 163, 184, 0.4);
--      padding: 16px 16px 14px;
--      box-shadow: var(--shadow-soft);
--    }
--
--    .hero-card-inner {
--      border-radius: 18px;
--      padding: 18px;
--      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.7));
--      border: 1px solid rgba(15, 23, 42, 0.7);
--    }
--
--    .hero-card-header {
--      display: flex;
--      justify-content: space-between;
--      align-items: center;
--      margin-bottom: 14px;
--      font-size: 12px;
--      color: var(--text-muted);
--    }
--
--    .hero-card-title {
--      font-size: 14px;
--      font-weight: 500;
--      color: var(--text-main);
--    }
--
--    .hero-metrics {
--      display: grid;
--      grid-template-columns: repeat(2, minmax(0, 1fr));
--      gap: 12px;
--      margin-bottom: 16px;
--    }
--
--    .metric {
--      padding: 10px 10px 9px;
--      border-radius: 12px;
--      background: rgba(15, 23, 42, 0.9);
--      border: 1px solid rgba(51, 65, 85, 0.9);
--    }
--
--    .metric-label {
--      font-size: 11px;
--      color: var(--text-muted);
--      margin-bottom: 4px;
--      text-transform: uppercase;
--      letter-spacing: 0.15em;
--    }
--
--    .metric-value {
--      font-size: 18px;
--      font-weight: 600;
--    }
--
--    .metric-note {
--      font-size: 10px;
--      color: var(--text-muted);
--      margin-top: 4px;
--    }
--
--    .hero-quote {
--      margin-top: 10px;
--      padding-top: 10px;
--      border-top: 1px dashed rgba(75, 85, 99, 0.7);
--      font-size: 12px;
--      color: var(--text-muted);
--      font-style: italic;
--    }
--
--    .hero-quote strong {
--      font-style: normal;
--      color: var(--text-main);
--    }
--
--    /* VAD LETAR DU EFTER / “SUPERKRAFTER” */
--
--    .super-grid {
--      display: grid;
--      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
--      gap: 12px;
--    }
--
--    .super-card {
--      border-radius: 14px;
--      padding: 12px 12px 10px;
--      background: var(--card);
--      border: 1px solid rgba(31, 41, 55, 0.92);
--      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.7);
--      font-size: 13px;
--      cursor: pointer;
--      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out, background 0.18s ease-out;
--    }
--
--    .super-card:hover {
--      transform: translateY(-3px);
--      border-color: rgba(148, 163, 184, 0.9);
--      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.9);
--      background: rgba(15, 23, 42, 0.98);
--    }
--
--    .super-label {
--      font-size: 11px;
--      text-transform: uppercase;
--      letter-spacing: 0.16em;
--      color: var(--accent-alt);
--      margin-bottom: 4px;
--    }
--
--    .super-title {
--      font-size: 14px;
--      font-weight: 500;
--      margin-bottom: 4px;
--    }
--
--    .super-text {
--      font-size: 12px;
--      color: var(--text-muted);
--    }
--
--    /* “TJÄNSTER / PROGRAM” */
--
--    .cards {
--      display: grid;
--      grid-template-columns: repeat(3, minmax(0, 1fr));
--      gap: 16px;
--    }
--
--    .card {
--      padding: 16px 16px 14px;
--      border-radius: var(--radius-lg);
--      background: var(--card);
--      border: 1px solid rgba(31, 41, 55, 0.92);
--      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.7);
--      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out, background 0.18s ease-out;
--    }
--
--    .card:hover {
--      transform: translateY(-4px);
--      box-shadow: 0 22px 55px rgba(15, 23, 42, 0.9);
--      border-color: rgba(148, 163, 184, 0.9);
--      background: rgba(15, 23, 42, 0.98);
--    }
--
--    .card-label {
--      font-size: 11px;
--      color: var(--text-muted);
--      text-transform: uppercase;
--      letter-spacing: 0.14em;
--      margin-bottom: 6px;
--    }
--
--    .card-title {
--      font-size: 16px;
--      margin-bottom: 6px;
--    }
--
--    .card-text {
--      font-size: 13px;
--      color: var(--text-muted);
--      margin-bottom: 10px;
--    }
--
--    .card-meta {
--      font-size: 11px;
--      color: var(--accent);
--    }
--
--    /* ASSESSMENT-SECTION */
--
--    .assessment {
--      display: grid;
--      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
--      gap: 22px;
--      align-items: center;
--      padding: 22px 18px 20px;
--      border-radius: 20px;
--      border: 1px solid rgba(56, 189, 248, 0.5);
--      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), rgba(15, 23, 42, 0.98));
--      box-shadow: var(--shadow-soft);
--      font-size: 14px;
--      color: var(--text-muted);
--    }
--
--    .assessment h3 {
--      margin: 0 0 6px;
--      font-size: 18px;
--      letter-spacing: -0.02em;
--      color: var(--text-main);
--    }
--
--    .assessment p {
--      margin: 0 0 10px;
--    }
--
--    .assessment-meta {
--      font-size: 12px;
--      color: var(--text-muted);
--    }
--
--    .assessment-badge {
--      display: inline-flex;
--      align-items: center;
--      gap: 6px;
--      padding: 3px 10px;
--      border-radius: 999px;
--      border: 1px solid rgba(191, 219, 254, 0.8);
--      font-size: 11px;
--      color: var(--accent-alt);
--      margin-bottom: 8px;
--      text-transform: uppercase;
--      letter-spacing: 0.13em;
--    }
--
--    /* PODD & ARTIKLAR */
--
--    .two-col {
--      display: grid;
--      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
--      gap: 24px;
--    }
--
--    .list-block {
--      border-radius: 18px;
--      padding: 16px 16px 12px;
--      background: var(--card);
--      border: 1px solid rgba(31, 41, 55, 0.92);
--      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.7);
--      font-size: 13px;
--      color: var(--text-muted);
--    }
--
--    .list-header {
--      display: flex;
--      justify-content: space-between;
--      align-items: baseline;
--      gap: 8px;
--      margin-bottom: 12px;
--    }
--
--    .list-header h3 {
--      margin: 0;
--      font-size: 16px;
--      letter-spacing: -0.01em;
--      color: var(--text-main);
--    }
--
--    .list-link {
--      font-size: 12px;
--      color: var(--accent-alt);
--    }
--
--    .item {
--      padding: 8px 0;
--      border-top: 1px solid rgba(51, 65, 85, 0.9);
--    }
--
--    .item:first-of-type {
--      border-top: none;
--    }
--
--    .item-title {
--      font-size: 14px;
--      margin-bottom: 3px;
--      color: var(--text-main);
--    }
--
--    .item-meta {
--      font-size: 11px;
--      color: var(--text-muted);
--      margin-bottom: 4px;
--    }
--
--    .item-text {
--      font-size: 12px;
--      color: var(--text-muted);
--    }
--
--    /* NYHETSBREV */
--
--    .newsletter {
--      border-radius: 20px;
--      padding: 18px 18px 16px;
--      background: radial-gradient(circle at top, rgba(251, 191, 36, 0.25), rgba(15, 23, 42, 0.98));
--      border: 1px solid rgba(251, 191, 36, 0.6);
--      box-shadow: var(--shadow-soft);
--      font-size: 13px;
--      color: var(--text-muted);
--    }
--
--    .newsletter h3 {
--      margin: 0 0 4px;
--      font-size: 18px;
--      letter-spacing: -0.02em;
--      color: var(--text-main);
--    }
--
--    .newsletter p {
--      margin: 0 0 10px;
--    }
--
--    .newsletter-form {
--      display: flex;
--      flex-wrap: wrap;
--      gap: 8px;
--      margin-top: 8px;
--    }
--
--    .newsletter input {
--      flex: 1;
--      min-width: 180px;
--      padding: 8px 10px;
--      border-radius: 999px;
--      border: 1px solid rgba(55, 65, 81, 0.95);
--      background: rgba(15, 23, 42, 0.98);
--      color: var(--text-main);
--      font-size: 13px;
--    }
--
--    .newsletter small {
--      font-size: 11px;
--      color: var(--text-muted);
--      display: block;
--      margin-top: 6px;
--    }
--
--    /* KONTAKT */
--
--    .contact {
--      display: grid;
--      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
--      gap: 26px;
--    }
--
--    .contact-info {
--      font-size: 13px;
--      color: var(--text-muted);
--    }
--
--    .contact-info p {
--      margin-top: 0;
--      margin-bottom: 10px;
--    }
--
--    .contact-highlight {
--      font-size: 13px;
--      color: var(--accent);
--      margin-bottom: 8px;
--    }
--
--    .contact-meta {
--      font-size: 12px;
--      color: var(--text-muted);
--    }
--
--    .contact-form {
--      padding: 16px 16px 14px;
--      border-radius: var(--radius-lg);
--      background: var(--card);
--      border: 1px solid rgba(31, 41, 55, 0.92);
--      box-shadow: 0 22px 55px rgba(15, 23, 42, 0.85);
--      font-size: 13px;
--    }
--
--    .contact-form-row {
--      margin-bottom: 10px;
--    }
--
--    .contact-form label {
--      display: block;
--      margin-bottom: 4px;
--      font-size: 12px;
--      color: var(--text-muted);
--    }
--
--    .contact-form input,
--    .contact-form textarea {
--      width: 100%;
--      padding: 8px 10px;
--      border-radius: 10px;
--      border: 1px solid rgba(55, 65, 81, 0.95);
--      background: rgba(15, 23, 42, 0.98);
--      color: var(--text-main);
--      font-size: 13px;
--      font-family: inherit;
--    }
--
--    .contact-form textarea {
--      resize: vertical;
--      min-height: 80px;
--    }
--
--    .contact-form small {
--      font-size: 11px;
--      color: var(--text-muted);
--    }
--
--    footer {
--      border-top: 1px solid rgba(51, 65, 85, 0.8);
--      padding: 18px 20px 24px;
--      font-size: 12px;
--      color: var(--text-muted);
--      text-align: center;
--    }
--
--    /* Transitions */
--
--    button,
--    .card,
--    .nav-cta,
--    .super-card {
--      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, background 0.18s ease-out, border-color 0.18s ease-out, color 0.18s ease-out;
--    }
--
--    .btn-primary:hover {
--      transform: translateY(-1px);
--      box-shadow: 0 24px 55px rgba(245, 158, 11, 0.7);
--    }
--
--    .btn-secondary:hover {
--      transform: translateY(-1px);
--      border-color: rgba(148, 163, 184, 0.9);
--      color: var(--text-main);
--    }
--
--    .nav-cta:hover {
--      transform: translateY(-1px);
--      color: var(--text-main);
--      border-color: rgba(249, 250, 251, 0.4);
--    }
--
--    /* Responsivitet */
--
--    @media (max-width: 960px) {
--      .hero,
--      .assessment,
--      .two-col,
--      .contact {
--        grid-template-columns: minmax(0, 1fr);
--      }
--
--      .hero {
--        padding-top: 16px;
--      }
--
--      .hero-card {
--        order: -1;
--      }
--
--      .cards {
--        grid-template-columns: repeat(2, minmax(0, 1fr));
--      }
--    }
--
--    @media (max-width: 720px) {
--      .section {
--        padding-inline: 16px;
--        padding-block: 44px;
--      }
--
--      .cards {
--        grid-template-columns: minmax(0, 1fr);
--      }
--
--      .section-header {
--        flex-direction: column;
--        align-items: flex-start;
--      }
--
--      .nav-links {
--        display: none;
--      }
--    }
--  </style>
-+  <link rel="stylesheet" href="styles.css">
- </head>
- <body>
-+  <div class="bg-grid" aria-hidden="true"></div>
-+  <div class="aurora aurora-1" aria-hidden="true"></div>
-+  <div class="aurora aurora-2" aria-hidden="true"></div>
-+  <div class="floating-orb orb-gold" aria-hidden="true"></div>
-+  <div class="floating-orb orb-cyan" aria-hidden="true"></div>
-   <div class="page">
-     <!-- NAV -->
-     <header>
-       <nav class="nav">
-         <div class="nav-left">
-           <div class="brand-mark">F</div>
-           <div>
-             <div class="brand-text-main">Futurelead</div>
-             <div class="brand-text-sub">Lead with trust</div>
-           </div>
-         </div>
--        <div class="nav-links">
--          <a href="#tjanster">Tjänster</a>
--          <a href="#podd">Podcast</a>
--          <a href="#artiklar">Artiklar</a>
--          <a href="#kontakt">Kontakt</a>
-+        <div class="nav-right" id="nav-menu">
-+          <div class="nav-links">
-+            <a href="#tjanster">Tjänster</a>
-+            <a href="#podd">Podcast</a>
-+            <a href="#artiklar">Artiklar</a>
-+            <a href="#kontakt">Kontakt</a>
-+          </div>
-           <button class="nav-cta" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
-             Boka samtal
-           </button>
-         </div>
-+        <button class="nav-toggle" type="button" aria-label="Öppna meny" aria-expanded="false">
-+          <span></span>
-+          <span></span>
-+          <span></span>
-+        </button>
-       </nav>
-     </header>
- 
-     <main>
-       <!-- HERO -->
-       <section class="section">
-         <div class="hero">
-           <div>
-             <div class="hero-tag">
-               <div class="hero-tag-dot"></div>
-               <div>Tillitsbaserat ledarskap, på riktigt</div>
-             </div>
-             <h1 class="hero-title">
-               Mindre kontroll.<br />
-               <span>Mer ansvar.</span>
-             </h1>
-             <p class="hero-subtitle">
-               Futurelead hjälper chefer och team att bygga psykologisk trygghet, tydlighet och ansvarstagande – med modern forskning i ryggen och vardagen som utgångspunkt.
-             </p>
-             <p class="hero-why">
-               Vår grundtanke är enkel: människor vill bidra. När vi ger dem trygghet, riktning och förtroende, uppstår både bättre resultat och en mänskligare arbetsplats.
-             </p>
- 
-             <div class="hero-cta-row">
-               <button class="btn-primary" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
-@@ -829,51 +98,138 @@
-                 <div class="metric">
-                   <div class="metric-label">Ärlig feedback</div>
-                   <div class="metric-value">+47%</div>
-                   <div class="metric-note">
-                     Team där chefer aktivt ber om uppriktig återkoppling ser ofta tydligt ökat engagemang.
-                   </div>
-                 </div>
-                 <div class="metric">
-                   <div class="metric-label">Felrädsla</div>
-                   <div class="metric-value">−32%</div>
-                   <div class="metric-note">
-                     När misstag ses som lärande ökar både innovationsförmåga och ansvarstagande.
-                   </div>
-                 </div>
-               </div>
- 
-               <div class="hero-quote">
-                 <strong>“Trygghet och ansvar är inte motsatser.”</strong><br />
-                 De mest hållbara organisationerna kombinerar höga förväntningar med hög omsorg om människorna som ska leverera.
-               </div>
-             </div>
-           </aside>
-         </div>
-       </section>
- 
-+      <section class="section future-intro" id="framtid">
-+        <div class="section-header">
-+          <div>
-+            <h2 class="section-title">Ledarskap 2026: teknik + mänsklighet</h2>
-+            <p class="section-subtitle">Vi kombinerar beteendevetenskap med ny tech: AI-stöd för reflektion, datadrivna team-signaler och visuella upplevelser som känns lika moderna som innehållet.</p>
-+          </div>
-+          <div class="signal-ribbon">
-+            <span class="pulse-dot"></span>Uppdaterad design & metoder för 2026
-+          </div>
-+        </div>
-+
-+        <div class="future-grid">
-+          <article class="future-card reveal">
-+            <div class="card-label">Neuroledarskap</div>
-+            <h3 class="future-title">Signalsprint för psykologisk trygghet</h3>
-+            <p class="future-text">Vi visualiserar mikro-beteenden och hur de uppfattas i teamet. En snabb signalworkshop ger en tydlig nulägesbild och en 30-dagars labbplan.</p>
-+            <div class="pill-row">
-+              <span class="pill">Live-sensorik</span>
-+              <span class="pill">Reflektionsprompter</span>
-+              <span class="pill">Digitala mikroutmaningar</span>
-+            </div>
-+          </article>
-+
-+          <article class="future-card reveal">
-+            <div class="card-label">AI + Facilitering</div>
-+            <h3 class="future-title">Coachning med co-pilot</h3>
-+            <p class="future-text">En kombination av mänsklig coachning och AI-genererade reflektionsfrågor. Ledare får en personlig space där de kan testa formuleringar och fatta beslut snabbare.</p>
-+            <div class="pill-row">
-+              <span class="pill">Personliga dashboards</span>
-+              <span class="pill">Voice-notes → action</span>
-+              <span class="pill">Förankring i forskning</span>
-+            </div>
-+          </article>
-+
-+          <article class="future-card reveal">
-+            <div class="card-label">Hybridteam</div>
-+            <h3 class="future-title">Studioformat som engagerar</h3>
-+            <p class="future-text">Vi bygger interaktiva sessioner med live-polls, visuella dashboards och gemensam whiteboard. Rakt, tydligt och gjort för korta attention spans.</p>
-+            <div class="pill-row">
-+              <span class="pill">Motion-first slides</span>
-+              <span class="pill">Zero-fluff</span>
-+              <span class="pill">Mätbar progression</span>
-+            </div>
-+          </article>
-+        </div>
-+
-+        <div class="lab-grid">
-+          <article class="lab-card reveal">
-+            <div class="lab-header">
-+              <div class="chip">Mätpunkter 2026</div>
-+              <div class="lab-score">
-+                <span class="score-number" data-score="86">86</span><span class="score-unit">/100</span>
-+                <div class="score-note">Team readiness</div>
-+              </div>
-+            </div>
-+            <p>Vi följer tre enkla datapunkter: trygghet, tydlighet och tempo. Visualiserat i ett levande radar-diagram där teamet själva sätter nästa steg.</p>
-+            <div class="progress-row">
-+              <div class="progress-pill"><span>Trygghet</span><span class="progress-bar" style="--progress:78%"></span></div>
-+              <div class="progress-pill"><span>Tydlighet</span><span class="progress-bar" style="--progress:88%"></span></div>
-+              <div class="progress-pill"><span>Tempo</span><span class="progress-bar" style="--progress:72%"></span></div>
-+            </div>
-+          </article>
-+
-+          <article class="lab-card reveal">
-+            <div class="lab-header">
-+              <div class="chip chip-alt">Formats</div>
-+              <div class="lab-score">
-+                <span class="score-number" data-score="30">30</span><span class="score-unit"> dagar</span>
-+                <div class="score-note">per labbcykel</div>
-+              </div>
-+            </div>
-+            <ul class="lab-list">
-+              <li><strong>Vecka 1:</strong> Signalworkshop + baseline.</li>
-+              <li><strong>Vecka 2–3:</strong> Co-pilotad coachning & mikrohandlingar.</li>
-+              <li><strong>Vecka 4:</strong> Demo av förändrade beteenden + next sprint.</li>
-+            </ul>
-+            <div class="lab-footer">
-+              <div class="chip ghost">Passar ledningsgrupper & produktteam</div>
-+              <button class="btn-secondary subtle" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">Planera ett labb</button>
-+            </div>
-+          </article>
-+        </div>
-+      </section>
-+
-+      
-+
-       <!-- VAD LETAR DU EFTER? -->
-+
-       <section class="section section-tight">
-         <div class="section-header">
-           <div>
-             <h2 class="section-title">Vad vill du stärka just nu?</h2>
-             <p class="section-subtitle">
-               Välj det som ligger närmast din verklighet – så hittar du snabbt rätt bland föreläsningar, workshops och stöd till ledare.
-             </p>
-           </div>
-         </div>
-         <div class="super-grid">
-           <div class="super-card" onclick="document.getElementById('tjanster').scrollIntoView({behavior:'smooth'})">
-             <div class="super-label">Ledarskap</div>
-             <div class="super-title">Jag vill utveckla mitt ledarskap</div>
-             <div class="super-text">För dig som är chef idag eller på väg mot en större roll och vill leda med både tydlighet och omtanke.</div>
-           </div>
-           <div class="super-card" onclick="document.getElementById('tjanster').scrollIntoView({behavior:'smooth'})">
-             <div class="super-label">Team</div>
-             <div class="super-title">Vi vill stärka vårt team</div>
-             <div class="super-text">För grupper som behöver mer tillit, bättre dialog och mod att lyfta det som skaver.</div>
-           </div>
-           <div class="super-card" onclick="document.getElementById('tjanster').scrollIntoView({behavior:'smooth'})">
-             <div class="super-label">Kultur</div>
-             <div class="super-title">Vi står i en förändring</div>
-             <div class="super-text">För organisationer som vill göra en tydlig kulturresa – inte bara byta presentationer.</div>
-           </div>
-@@ -1092,28 +448,103 @@
-               <label for="organisation">Organisation (valfritt)</label>
-               <input type="text" id="organisation" name="organisation" placeholder="Företag / organisation" />
-             </div>
-             <div class="contact-form-row">
-               <label for="meddelande">Vad vill du utforska?</label>
-               <textarea id="meddelande" name="meddelande" placeholder="Beskriv kort ditt behov, er situation eller vilka frågor du bär på."></textarea>
-             </div>
-             <div class="contact-form-row">
-               <button type="submit" class="btn-primary">Skicka förfrågan</button>
-               <div>
-                 <small>Formuläret är just nu endast design. För att göra det aktivt behöver du koppla det till t.ex. ett mailformulär eller en tredjepartstjänst.</small>
-               </div>
-             </div>
-           </form>
-         </div>
-       </section>
-     </main>
- 
-     <footer>
-       &copy; <span id="year"></span> Futurelead. Ledarskap byggt på tillit, tydlighet och ansvar.
-     </footer>
-   </div>
- 
-   <script>
-     document.getElementById("year").textContent = new Date().getFullYear();
-+
-+    const navToggle = document.querySelector('.nav-toggle');
-+    const navMenu = document.getElementById('nav-menu');
-+    const body = document.body;
-+
-+    const closeNav = () => {
-+      body.classList.remove('nav-open');
-+      navToggle?.setAttribute('aria-expanded', 'false');
-+    };
-+
-+    navToggle?.addEventListener('click', () => {
-+      const isOpen = body.classList.toggle('nav-open');
-+      navToggle.setAttribute('aria-expanded', isOpen);
-+    });
-+
-+    navMenu?.querySelectorAll('a, button').forEach((el) => {
-+      el.addEventListener('click', closeNav);
-+    });
-+
-+    document.addEventListener('click', (event) => {
-+      if (body.classList.contains('nav-open') && !navMenu?.contains(event.target) && !navToggle?.contains(event.target)) {
-+        closeNav();
-+      }
-+    });
-+
-+    const tiltTargets = document.querySelectorAll('.future-card, .lab-card, .hero-card');
-+    const handleTilt = (event) => {
-+      tiltTargets.forEach((card) => {
-+        const rect = card.getBoundingClientRect();
-+        const x = event.clientX - rect.left - rect.width / 2;
-+        const y = event.clientY - rect.top - rect.height / 2;
-+        const rotateX = (y / rect.height) * -6;
-+        const rotateY = (x / rect.width) * 6;
-+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-+      });
-+    };
-+    document.addEventListener('mousemove', handleTilt);
-+    document.addEventListener('mouseleave', () => {
-+      tiltTargets.forEach((card) => (card.style.transform = 'rotateX(0deg) rotateY(0deg)'));
-+    });
-+
-+    const observer = new IntersectionObserver(
-+      (entries) => {
-+        entries.forEach((entry) => {
-+          if (entry.isIntersecting) {
-+            entry.target.classList.add('visible');
-+          }
-+        });
-+      },
-+      { threshold: 0.25 }
-+    );
-+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-+
-+    document.querySelectorAll('.score-number').forEach((el) => {
-+      const target = Number(el.dataset.score);
-+      let current = 0;
-+      const step = Math.max(1, Math.round(target / 40));
-+      const interval = setInterval(() => {
-+        current += step;
-+        if (current >= target) {
-+          current = target;
-+          clearInterval(interval);
-+        }
-+        el.textContent = current;
-+      }, 30);
-+    });
-+
-+    const orbs = document.querySelectorAll('.floating-orb');
-+    document.addEventListener('mousemove', (e) => {
-+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
-+      orbs.forEach((orb, index) => {
-+        orb.style.transform = `translate(${x * (index + 1)}px, ${y * (index + 1)}px)`;
-+      });
-+    });
-   </script>
- </body>
- </html>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lead with Trust – Thomas Burénius</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Du kan byta font senare om du vill -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo">
+        <span class="logo-mark">TB</span>
+        <span class="logo-text">Lead with Trust</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#hero">Hem</a>
+        <a href="#about">Om mig</a>
+        <a href="#services">Tjänster</a>
+        <a href="#philosophy">Filosofi</a>
+        <a href="#contact">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section id="hero" class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <p class="hero-tagline">Ledarskap med tillit, mod och vardag.</p>
+          <h1>Jag hjälper ledare och team att bygga kulturer där människor vill – inte måste – prestera.</h1>
+          <p class="hero-subtitle">
+            20 år av ledarskap, förändringsresor och kulturbygge – destillerat till konkreta arbetssätt
+            som fungerar i verkligheten, inte bara i powerpoints.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn primary-btn">Boka samtal</a>
+            <a href="#services" class="btn secondary-btn">Se hur jag kan hjälpa</a>
+          </div>
+          <p class="hero-note">
+            Fokus: psykologisk trygghet, modiga samtal och ansvarstagande medarbetarskap.
+          </p>
+        </div>
+        <div class="hero-highlight-card">
+          <p class="card-label">Vad andra brukar säga</p>
+          <p class="card-quote">
+            “Du skapar en trygghet där man vågar vara ärlig – och samtidigt ställer du krav som gör att vi flyttar fram positionerna.”
+          </p>
+          <p class="card-meta">Ledare, besöksnäringen</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OM MIG -->
+    <section id="about" class="section about-section">
+      <div class="container two-column">
+        <div class="section-intro">
+          <h2>Om mig</h2>
+          <p class="section-kicker">Nyfiken, tydlig och hundra procent människa.</p>
+        </div>
+        <div class="section-body">
+          <p>
+            Jag har arbetat med ledarskap i snart två decennier – i verksamheter där allt märks direkt:
+            gäster, medarbetare, siffror och stämning. Det har lärt mig att kultur inte sitter i
+            väggarna, den sitter i beteenden. I hur vi pratar med varandra en vanlig tisdag.
+          </p>
+          <p>
+            Mitt arbetssätt bygger på psykologisk trygghet, tydlig riktning och ett äkta intresse för
+            människor. Jag tror inte på perfekta ledare, jag tror på ledare som vågar vara ärliga,
+            justera kursen och stå kvar när det blåser.
+          </p>
+          <p>
+            När vi jobbar tillsammans lovar jag tre saker: konkret feedback, värme i tonen och fullt fokus
+            på att få saker att hända i vardagen – inte bara på konferenser.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TJÄNSTER -->
+    <section id="services" class="section services-section">
+      <div class="container">
+        <div class="section-header-center">
+          <h2>Tjänster</h2>
+          <p class="section-kicker">
+            Alltid jordnära, alltid kopplat till verkligheten i din organisation.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="service-card">
+            <h3>Föreläsningar & inspirationspass</h3>
+            <p>
+              Personliga och ärliga föreläsningar om psykologisk trygghet, engagemang och modigt
+              ledarskap. Alltid med exempel från verkligheten och utrymme för reflektion.
+            </p>
+            <ul>
+              <li>30–60 minuter, digitalt eller på plats</li>
+              <li>Anpassat exempelmaterial från er vardag</li>
+              <li>Möjlighet till uppföljande frågestund</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <h3>Lednings- och teamutveckling</h3>
+            <p>
+              Vi går från fina ord till konkreta beteenden. Tydlig riktning, spelregler och arbetssätt
+              som gör att fler tar ansvar – och vågar säga det som behöver sägas.
+            </p>
+            <ul>
+              <li>Workshops för ledningsgrupper och team</li>
+              <li>Spelregler, mötesstruktur och uppföljning</li>
+              <li>Fokus på tillit, ansvar och modiga samtal</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <h3>Rådgivning till chefer</h3>
+            <p>
+              Ett bollplank för dig som leder andra. Vi pratar om svåra beslut, kulturfrågor, omorganisationer
+              och vad du faktiskt kan göra här och nu.
+            </p>
+            <ul>
+              <li>1:1-samtal, löpande eller punktinsatser</li>
+              <li>Konkreta strategier för din vardag</li>
+              <li>Ärligt, tryggt och utan floskler</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILOSOFI / PRINCIPER -->
+    <section id="philosophy" class="section philosophy-section">
+      <div class="container two-column">
+        <div class="section-intro">
+          <h2>Min filosofi</h2>
+          <p class="section-kicker">Mindre powerpoints, mer beteenden.</p>
+        </div>
+        <div class="section-body">
+          <ul class="pill-list">
+            <li>Tillit först – sedan struktur och resultat.</li>
+            <li>Alla ska veta varför vi gör det vi gör.</li>
+            <li>Feedback är en gåva, inte en dom.</li>
+            <li>Modiga samtal är viktigare än snygga policys.</li>
+            <li>Ledarskap börjar i hur du möter en person i taget.</li>
+          </ul>
+          <p>
+            Jag lånar gärna tankesätt från modern organisationspsykologi, men översätter alltid till
+            något som går att testa nästa vecka. Små steg, ofta, slår stora satsningar som aldrig blir av.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="contact" class="section contact-section">
+      <div class="container two-column">
+        <div class="section-intro">
+          <h2>Kontakt</h2>
+          <p class="section-kicker">
+            Nyfiken på ett samarbete, föreläsning eller bara bolla en tanke?
+          </p>
+        </div>
+        <div class="section-body">
+          <p>
+            Skicka ett mail, connecta på LinkedIn eller föreslå en tid för ett kort digitalt möte.
+            Vi börjar enkelt och ser om vi är en bra match.
+          </p>
+          <div class="contact-box">
+            <p><strong>E-post:</strong> <a href="mailto:din.mail@exempel.se">din.mail@exempel.se</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn-profil</a></p>
+          </div>
+          <p class="contact-note">
+            Jag återkommer alltid så snart jag kan – oftast inom 1–2 arbetsdagar.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© <span id="year"></span> Lead with Trust – Thomas Burénius</p>
+      <p class="footer-sub">Bygger kulturer där människor vågar, vill och vågar vilja lite till.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Sätter aktuellt år i footern
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
