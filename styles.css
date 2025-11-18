@@ -475,6 +475,10 @@ body {
    ========= */
 
 @media (max-width: 800px) {
+  .site-header .container {
+    padding: 0 1.25rem;
+  }
+
   .nav-container {
     padding: 0.6rem 0;
   }
@@ -525,8 +529,7 @@ body {
   }
 
   .hero-highlight-card {
-    order: -1;
-    margin-bottom: 1.5rem;
+    margin-top: 1.2rem;
   }
 
   .two-column {
