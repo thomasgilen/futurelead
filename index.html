@@ -200,8 +200,21 @@
   </footer>
 
   <script>
-    // Sätter aktuellt år i footern
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  // Sätter aktuellt år i footern
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Enkel toggle för mobilmenyn
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      navLinks.classList.toggle('nav-open');
+    });
+  }
+</script>
+
 </body>
 </html>
