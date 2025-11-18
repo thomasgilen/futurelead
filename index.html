@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Futurelead – Ledarskap byggt på tillit</title>
-  <meta name="description" content="Futurelead hjälper chefer och team att bygga tillitsbaserat ledarskap, psykologisk trygghet och hållbara resultat.">
-  
+  <title>Futurelead – Lead with Trust</title>
+  <meta name="description" content="Futurelead hjälper ledare och team att bygga tillitsbaserat ledarskap, psykologisk trygghet och hållbara resultat.">
+
   <!-- Modernt typsnitt -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
       --card: rgba(15, 23, 42, 0.96);
       --radius-lg: 18px;
       --shadow-soft: 0 22px 50px rgba(15, 23, 42, 0.75);
-      --max-width: 1080px;
+      --max-width: 1120px;
     }
 
     * {
@@ -40,7 +40,7 @@
       background:
         radial-gradient(circle at 0% 0%, rgba(251, 191, 36, 0.12), transparent 55%),
         radial-gradient(circle at 100% 10%, rgba(56, 189, 248, 0.12), transparent 55%),
-        radial-gradient(circle at 50% 100%, rgba(129, 140, 248, 0.18), #020617 65%);
+        radial-gradient(circle at 50% 100%, rgba(129, 140, 248, 0.2), #020617 65%);
       color: var(--text-main);
       line-height: 1.6;
     }
@@ -58,8 +58,6 @@
     button {
       font-family: inherit;
     }
-
-    /* Layout */
 
     .page {
       min-height: 100vh;
@@ -158,10 +156,35 @@
     .section {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 64px 20px;
+      padding: 56px 20px;
     }
 
-    /* Hero */
+    .section-tight {
+      padding-top: 28px;
+      padding-bottom: 56px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      margin: 0 0 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 460px;
+    }
+
+    /* HERO */
 
     .hero {
       display: grid;
@@ -212,24 +235,13 @@
       margin-bottom: 22px;
     }
 
-    .hero-bullets {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 10px;
-      margin-bottom: 22px;
-    }
-
-    .hero-bullet {
+    .hero-why {
       font-size: 13px;
       color: var(--text-muted);
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .hero-bullet-icon {
-      font-size: 16px;
-      margin-top: 1px;
+      max-width: 540px;
+      margin-bottom: 20px;
+      border-left: 2px solid rgba(148, 163, 184, 0.6);
+      padding-left: 10px;
     }
 
     .hero-cta-row {
@@ -237,7 +249,12 @@
       flex-wrap: wrap;
       gap: 12px;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+    }
+
+    .hero-caption {
+      font-size: 12px;
+      color: var(--text-muted);
     }
 
     .btn-primary {
@@ -261,13 +278,6 @@
       color: var(--text-muted);
       cursor: pointer;
     }
-
-    .hero-caption {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    /* Hero – right side "card" */
 
     .hero-card {
       border-radius: 24px;
@@ -346,42 +356,52 @@
       color: var(--text-main);
     }
 
-    /* Section: Tjänster */
+    /* VAD LETAR DU EFTER / “SUPERKRAFTER” */
 
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 16px;
-      margin-bottom: 20px;
+    .super-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
     }
 
-    .section-title {
-      font-size: 24px;
-      margin: 0 0 4px;
-      letter-spacing: -0.02em;
-    }
-
-    .section-subtitle {
+    .super-card {
+      border-radius: 14px;
+      padding: 12px 12px 10px;
+      background: var(--card);
+      border: 1px solid rgba(31, 41, 55, 0.92);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.7);
       font-size: 13px;
-      color: var(--text-muted);
-      max-width: 420px;
+      cursor: pointer;
+      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out, background 0.18s ease-out;
     }
 
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+    .super-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(148, 163, 184, 0.9);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .super-label {
       font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-alt);
+      margin-bottom: 4px;
     }
 
-    .chip {
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      color: var(--text-muted);
-      background: rgba(15, 23, 42, 0.78);
+    .super-title {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
     }
+
+    .super-text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* “TJÄNSTER / PROGRAM” */
 
     .cards {
       display: grid;
@@ -429,86 +449,165 @@
       color: var(--accent);
     }
 
-    /* Section: Om mig */
+    /* ASSESSMENT-SECTION */
 
-    .about {
+    .assessment {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 26px;
-    }
-
-    .about-text {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 22px;
+      align-items: center;
+      padding: 22px 18px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), rgba(15, 23, 42, 0.98));
+      box-shadow: var(--shadow-soft);
       font-size: 14px;
       color: var(--text-muted);
     }
 
-    .about-text p {
-      margin-top: 0;
-      margin-bottom: 12px;
+    .assessment h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
     }
 
-    .about-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .assessment p {
+      margin: 0 0 10px;
+    }
+
+    .assessment-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .assessment-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(191, 219, 254, 0.8);
+      font-size: 11px;
+      color: var(--accent-alt);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+    }
+
+    /* PODD & ARTIKLAR */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .list-block {
+      border-radius: 18px;
+      padding: 16px 16px 12px;
+      background: var(--card);
+      border: 1px solid rgba(31, 41, 55, 0.92);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.7);
       font-size: 13px;
       color: var(--text-muted);
     }
 
-    .about-list li {
-      margin-bottom: 6px;
+    .list-header {
       display: flex;
+      justify-content: space-between;
+      align-items: baseline;
       gap: 8px;
+      margin-bottom: 12px;
     }
 
-    .about-list span {
+    .list-header h3 {
+      margin: 0;
       font-size: 16px;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
     }
 
-    .about-highlight {
-      margin-top: 12px;
-      font-size: 13px;
-      color: var(--accent);
+    .list-link {
+      font-size: 12px;
+      color: var(--accent-alt);
     }
 
-    .about-card {
-      padding: 16px 16px 14px;
-      border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.28), rgba(15, 23, 42, 0.98));
-      border: 1px solid rgba(56, 189, 248, 0.55);
+    .item {
+      padding: 8px 0;
+      border-top: 1px solid rgba(51, 65, 85, 0.9);
+    }
+
+    .item:first-of-type {
+      border-top: none;
+    }
+
+    .item-title {
+      font-size: 14px;
+      margin-bottom: 3px;
+      color: var(--text-main);
+    }
+
+    .item-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .item-text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* NYHETSBREV */
+
+    .newsletter {
+      border-radius: 20px;
+      padding: 18px 18px 16px;
+      background: radial-gradient(circle at top, rgba(251, 191, 36, 0.25), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(251, 191, 36, 0.6);
       box-shadow: var(--shadow-soft);
       font-size: 13px;
       color: var(--text-muted);
     }
 
-    .about-card h3 {
-      font-size: 15px;
-      margin-top: 0;
-      margin-bottom: 4px;
+    .newsletter h3 {
+      margin: 0 0 4px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
       color: var(--text-main);
     }
 
-    .about-card p {
-      margin-top: 0;
-      margin-bottom: 8px;
+    .newsletter p {
+      margin: 0 0 10px;
     }
 
-    .about-pill-row {
+    .newsletter-form {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
+      gap: 8px;
+      margin-top: 8px;
     }
 
-    .about-pill {
-      font-size: 11px;
-      padding: 3px 8px;
+    .newsletter input {
+      flex: 1;
+      min-width: 180px;
+      padding: 8px 10px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(191, 219, 254, 0.7);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text-main);
+      font-size: 13px;
     }
 
-    /* Section: Kontakt */
+    .newsletter small {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* KONTAKT */
 
     .contact {
       display: grid;
@@ -587,11 +686,12 @@
       text-align: center;
     }
 
-    /* Transitions / microinteractions */
+    /* Transitions */
 
     button,
     .card,
-    .nav-cta {
+    .nav-cta,
+    .super-card {
       transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, background 0.18s ease-out, border-color 0.18s ease-out, color 0.18s ease-out;
     }
 
@@ -614,9 +714,10 @@
 
     /* Responsivitet */
 
-    @media (max-width: 880px) {
+    @media (max-width: 960px) {
       .hero,
-      .about,
+      .assessment,
+      .two-col,
       .contact {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -632,20 +733,12 @@
       .cards {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-
-      .nav-links {
-        display: none;
-      }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
       .section {
         padding-inline: 16px;
         padding-block: 44px;
-      }
-
-      .hero {
-        gap: 22px;
       }
 
       .cards {
@@ -656,12 +749,16 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .nav-links {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <!-- Navigation -->
+    <!-- NAV -->
     <header>
       <nav class="nav">
         <div class="nav-left">
@@ -673,7 +770,8 @@
         </div>
         <div class="nav-links">
           <a href="#tjanster">Tjänster</a>
-          <a href="#ommig">Om mig</a>
+          <a href="#podd">Podcast</a>
+          <a href="#artiklar">Artiklar</a>
           <a href="#kontakt">Kontakt</a>
           <button class="nav-cta" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
             Boka samtal
@@ -683,57 +781,44 @@
     </header>
 
     <main>
-      <!-- Hero -->
+      <!-- HERO -->
       <section class="section">
         <div class="hero">
           <div>
             <div class="hero-tag">
               <div class="hero-tag-dot"></div>
-              <div>Tillitsbaserat ledarskap i praktiken</div>
+              <div>Tillitsbaserat ledarskap, på riktigt</div>
             </div>
             <h1 class="hero-title">
               Mindre kontroll.<br />
               <span>Mer ansvar.</span>
             </h1>
             <p class="hero-subtitle">
-              Futurelead hjälper chefer och team att bygga psykologisk trygghet, tydlighet och ansvarstagande – med forskning i ryggen och vardagen som utgångspunkt.
+              Futurelead hjälper chefer och team att bygga psykologisk trygghet, tydlighet och ansvarstagande – med modern forskning i ryggen och vardagen som utgångspunkt.
             </p>
-
-            <div class="hero-bullets">
-              <div class="hero-bullet">
-                <div class="hero-bullet-icon">▸</div>
-                <div>Workshops där ni översätter begrepp som “psykologisk trygghet” till konkret beteende i vardagen.</div>
-              </div>
-              <div class="hero-bullet">
-                <div class="hero-bullet-icon">▸</div>
-                <div>Stöd till ledningsgrupper som vill ta ägandet för kultur, engagemang och medarbetarskap på riktigt.</div>
-              </div>
-              <div class="hero-bullet">
-                <div class="hero-bullet-icon">▸</div>
-                <div>Föreläsningar där moderna studier möter ärliga berättelser från verkliga förändringsresor.</div>
-              </div>
-            </div>
+            <p class="hero-why">
+              Vår grundtanke är enkel: människor vill bidra. När vi ger dem trygghet, riktning och förtroende, uppstår både bättre resultat och en mänskligare arbetsplats.
+            </p>
 
             <div class="hero-cta-row">
               <button class="btn-primary" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
                 Boka ett första samtal (30 min)
               </button>
-              <button class="btn-secondary" onclick="document.getElementById('tjanster').scrollIntoView({behavior:'smooth'})">
-                Se upplägg & tjänster
+              <button class="btn-secondary" onclick="document.getElementById('assessment').scrollIntoView({behavior:'smooth'})">
+                Gör ett kort självtest
               </button>
             </div>
             <div class="hero-caption">
-              Inga färdiga mallar. Vi utgår från er verklighet, era dilemman och era mål – och bygger vidare där ni står.
+              Inga färdiga paketlösningar. Vi utgår från er verklighet, era dilemman och era mål – och bygger vidare där ni står.
             </div>
           </div>
 
-          <!-- Hero card -->
           <aside class="hero-card" aria-label="Kort överblick">
             <div class="hero-card-inner">
               <div class="hero-card-header">
                 <div>
-                  <div class="hero-card-title">När kulturen faktiskt ändras</div>
-                  <div>Små signaler att hålla koll på i vardagen</div>
+                  <div class="hero-card-title">När kulturen faktiskt förändras</div>
+                  <div>Små vardagssignaler att hålla koll på</div>
                 </div>
                 <div style="font-size:10px; text-align:right;">
                   Futurelead<br />inspired by research
@@ -766,20 +851,48 @@
         </div>
       </section>
 
-      <!-- Tjänster -->
+      <!-- VAD LETAR DU EFTER? -->
+      <section class="section section-tight">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Vad vill du stärka just nu?</h2>
+            <p class="section-subtitle">
+              Välj det som ligger närmast din verklighet – så hittar du snabbt rätt bland föreläsningar, workshops och stöd till ledare.
+            </p>
+          </div>
+        </div>
+        <div class="super-grid">
+          <div class="super-card" onclick="document.getElementById('tjanster').scrollIntoView({behavior:'smooth'})">
+            <div class="super-label">Ledarskap</div>
+            <div class="super-title">Jag vill utveckla mitt ledarskap</div>
+            <div class="super-text">För dig som är chef idag eller på väg mot en större roll och vill leda med både tydlighet och omtanke.</div>
+          </div>
+          <div class="super-card" onclick="document.getElementById('tjanster').scrollIntoView({behavior:'smooth'})">
+            <div class="super-label">Team</div>
+            <div class="super-title">Vi vill stärka vårt team</div>
+            <div class="super-text">För grupper som behöver mer tillit, bättre dialog och mod att lyfta det som skaver.</div>
+          </div>
+          <div class="super-card" onclick="document.getElementById('tjanster').scrollIntoView({behavior:'smooth'})">
+            <div class="super-label">Kultur</div>
+            <div class="super-title">Vi står i en förändring</div>
+            <div class="super-text">För organisationer som vill göra en tydlig kulturresa – inte bara byta presentationer.</div>
+          </div>
+          <div class="super-card" onclick="document.getElementById('podd').scrollIntoView({behavior:'smooth'})">
+            <div class="super-label">Inspiration</div>
+            <div class="super-title">Jag vill mest få nya perspektiv</div>
+            <div class="super-text">För dig som vill lyssna, läsa och reflektera först – innan du tar nästa steg.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TJÄNSTER / PROGRAM -->
       <section class="section" id="tjanster">
         <div class="section-header">
           <div>
-            <h2 class="section-title">Tjänster</h2>
+            <h2 class="section-title">Tjänster & upplägg</h2>
             <p class="section-subtitle">
-              Upplägg som går att anpassa efter er verklighet – oavsett om ni är ett mindre team eller en större organisation i förändring.
+              Allt Futurelead gör går att anpassa efter er verklighet – oavsett om ni är ett mindre team eller en större organisation i förändring.
             </p>
-          </div>
-          <div class="chips">
-            <span class="chip">Forskning + praktik</span>
-            <span class="chip">Psykologisk trygghet</span>
-            <span class="chip">Medarbetarskap</span>
-            <span class="chip">Kultur & engagemang</span>
           </div>
         </div>
 
@@ -799,10 +912,10 @@
             <div class="card-label">Föreläsning</div>
             <h3 class="card-title">Engagemang bortom enkätresultat</h3>
             <p class="card-text">
-              En ärlig föreläsning om kultur, ledarskap och medarbetarskap – där vi kopplar forskning till konkreta exempel från vardagen, både när det gått bra och när det gjort ont.
+              En ärlig föreläsning om kultur, ledarskap och medarbetarskap – med koppling till modern forskning och vardagens dilemman.
             </p>
             <div class="card-meta">
-              Format: 30–60 min + tid för dialog och frågor.
+              Format: 30–60 min + dialog/frågor, på plats eller digitalt.
             </div>
           </article>
 
@@ -819,53 +932,126 @@
         </div>
       </section>
 
-      <!-- Om mig -->
-      <section class="section" id="ommig">
-        <div class="section-header">
+      <!-- ASSESSMENT -->
+      <section class="section" id="assessment">
+        <div class="assessment">
           <div>
-            <h2 class="section-title">Om Futurelead</h2>
-            <p class="section-subtitle">
-              Futurelead handlar om att skapa ledarskap och medarbetarskap som faktiskt håller – i vardagen, i förändring och när det är som tuffast.
+            <div class="assessment-badge">Kort självtest</div>
+            <h3>Var är ditt största läckage – trygghet, tydlighet eller ansvar?</h3>
+            <p>
+              Svara på några snabba frågor och få en enkel bild av var ni tappar mest energi idag. Testet är inte en diagnos – men ett bra sätt att starta rätt samtal.
+            </p>
+            <p class="assessment-meta">
+              Du får en sammanfattning som du kan använda som underlag i dialog med ditt team, din chef eller Futurelead.
             </p>
           </div>
-        </div>
-
-        <div class="about">
-          <div class="about-text">
-            <p>
-              Här kan du berätta kort om din resa: hur du kom in i ledarskap, vilka erfarenheter som format dig och varför du valt att arbeta med tillit, tydlighet och psykologisk trygghet.
-            </p>
-            <p>
-              Du kan knyta an till konkreta situationer: att ta över efter en kris, att bygga upp förtroende där det saknats, eller hur ni vänt en kultur genom att börja i vardagens beteenden – inte i nya slogans.
-            </p>
-            <ul class="about-list">
-              <li><span>✓</span> Forskning som grund – men alltid översatt till verkliga beteenden.</li>
-              <li><span>✓</span> Trygghet och tydliga krav som två sidor av samma mynt.</li>
-              <li><span>✓</span> Fokus på det ni kan påverka i morgon, inte bara långsiktiga “visioner”.</li>
-            </ul>
-            <div class="about-highlight">
-              För Futurelead handlar ledarskap om att göra det lättare att ta ansvar – inte om att kontrollera varje steg.
+          <div>
+            <button class="btn-primary" style="margin-bottom:8px;">
+              Gör testet (beta – snart live)
+            </button>
+            <div class="assessment-meta">
+              Just nu är detta bara en prototyp. När du är redo att bygga det på riktigt kan vi koppla det till ett formulär eller ett enkelt verktyg.
             </div>
           </div>
-
-          <aside class="about-card">
-            <h3>Exempel på teman Futurelead ofta jobbar med</h3>
-            <p>
-              Justera listan så den speglar de områden du vill vara särskilt förknippad med.
-            </p>
-            <div class="about-pill-row">
-              <div class="about-pill">Psykologisk trygghet i team</div>
-              <div class="about-pill">Kulturförändring efter en kris</div>
-              <div class="about-pill">Engagemang & medarbetarskap</div>
-              <div class="about-pill">Feedback & svåra samtal</div>
-              <div class="about-pill">Förflyttning till VD-/C-nivå</div>
-              <div class="about-pill">Ledarskap i säsongsverksamhet</div>
-            </div>
-          </aside>
         </div>
       </section>
 
-      <!-- Kontakt -->
+      <!-- PODD & ARTIKLAR -->
+      <section class="section" id="podd">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Lyssna & läs</h2>
+            <p class="section-subtitle">
+              För dig som hellre börjar med inspiration och reflektion. Här kan du samla podd, artiklar och berättelser från verkliga förändringsresor.
+            </p>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <!-- Podcast-lista -->
+          <div class="list-block">
+            <div class="list-header">
+              <h3>Futurelead Podcast (placeholder)</h3>
+              <a class="list-link" href="#" target="_blank" rel="noopener">Se alla avsnitt</a>
+            </div>
+
+            <div class="item">
+              <div class="item-title">Att leda när det brinner – utan att bränna ut människor</div>
+              <div class="item-meta">Avsnitt 01 · 34 min · Gäst: TBD</div>
+              <div class="item-text">
+                Om hur man håller fast vid värderingar när trycket är som hårdast – och varför snabba lösningar ofta blir dyrast i längden.
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-title">Psykologisk trygghet bortom buzzwords</div>
+              <div class="item-meta">Avsnitt 02 · 29 min</div>
+              <div class="item-text">
+                Vi pratar om vad trygghet faktiskt innebär i vardagen: möten, återkoppling, konflikter och små modiga handlingar.
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-title">När medarbetarskapet blir på riktigt</div>
+              <div class="item-meta">Avsnitt 03 · 31 min</div>
+              <div class="item-text">
+                Om att flytta ägandeskap från chef till individ – och vad som händer när teamet börjar agera innan chefen hinner säga “gör så här”.
+              </div>
+            </div>
+          </div>
+
+          <!-- Artiklar -->
+          <div class="list-block" id="artiklar">
+            <div class="list-header">
+              <h3>Tankar & artiklar</h3>
+              <a class="list-link" href="#" target="_blank" rel="noopener">Visa fler texter</a>
+            </div>
+
+            <div class="item">
+              <div class="item-title">Varför “snäll” ledare ofta skapar otydlighet</div>
+              <div class="item-meta">Artikel · Medarbetarskap & ansvar</div>
+              <div class="item-text">
+                Om skillnaden mellan att vara snäll och att vara omtänksam – och hur det påverkar ansvar, prestation och tillit.
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-title">Tre små beteenden som förändrar en kultur</div>
+              <div class="item-meta">Artikel · Kultur & vardag</div>
+              <div class="item-text">
+                Vi tittar på tre enkla saker chefer kan börja göra redan denna vecka för att skapa mer mod och öppenhet.
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-title">Så vet du om din organisation är på väg åt fel håll</div>
+              <div class="item-meta">Artikel · Tidiga signaler</div>
+              <div class="item-text">
+                Om mikro-signalerna som ofta syns långt innan siffrorna rasar – och hur du kan agera i tid.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NYHETSBREV -->
+      <section class="section section-tight">
+        <div class="newsletter">
+          <h3>Nyhetsbrev för nyfikna ledare</h3>
+          <p>
+            Korta, ärliga tankar om ledarskap, kultur och medarbetarskap – ibland med forskning, ibland med berättelser direkt från verkligheten.
+          </p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="din@epost.se" required />
+            <button type="submit" class="btn-primary">Ja, skicka mig uppdateringar</button>
+          </form>
+          <small>
+            Just nu är detta bara ett visuellt formulär. När du vill lansera på riktigt kan vi koppla det till t.ex. Mailchimp, Brevo eller ett annat verktyg.
+          </small>
+        </div>
+      </section>
+
+      <!-- KONTAKT -->
       <section class="section" id="kontakt">
         <div class="section-header">
           <div>
@@ -927,7 +1113,6 @@
   </div>
 
   <script>
-    // Sätt årtal automatiskt i footern
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
