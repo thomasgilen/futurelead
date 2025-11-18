@@ -10,6 +10,38 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Open Graph (för delning, t.ex. LinkedIn) -->
+  <meta property="og:title" content="Lead with Trust – Föreläsare & rådgivare inom ledarskap" />
+  <meta property="og:description" content="Föreläsningar, workshops och rådgivning för organisationer som vill bygga psykologisk trygghet, engagemang och hållbara resultat." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thomasgilen.github.io/futurelead/" />
+  <!-- Byt denna bild när du har en egen -->
+  <meta property="og:image" content="https://thomasgilen.github.io/futurelead/og-image.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lead with Trust – Föreläsare & rådgivare inom ledarskap" />
+  <meta name="twitter:description" content="Föreläsningar, workshops och rådgivning inom kultur, psykologisk trygghet och ledarskap." />
+  <meta name="twitter:image" content="https://thomasgilen.github.io/futurelead/og-image.jpg" />
+
+  <!-- Schema.org (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Thomas Burénius",
+    "jobTitle": "COO Upplevelse, föreläsare och rådgivare inom ledarskap",
+    "url": "https://thomasgilen.github.io/futurelead/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Lead with Trust"
+    },
+    "sameAs": [
+      "https://www.linkedin.com"
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- NAVBAR -->
@@ -75,7 +107,7 @@
     </section>
 
     <!-- OM MIG -->
-    <section id="about" class="section about-section">
+    <section id="about" class="section about-section reveal">
       <div class="container two-column">
         <div class="section-intro">
           <h2>Om mig</h2>
@@ -101,7 +133,7 @@
     </section>
 
     <!-- TJÄNSTER -->
-    <section id="services" class="section services-section">
+    <section id="services" class="section services-section reveal">
       <div class="container">
         <div class="section-header-center">
           <h2>Tjänster</h2>
@@ -111,7 +143,7 @@
         </div>
 
         <div class="cards-grid">
-          <article class="service-card">
+          <article class="service-card reveal">
             <h3>Föreläsningar & inspirationspass</h3>
             <p>
               Personliga, ärliga och vardagsnära föreläsningar om kultur, modigt ledarskap och
@@ -125,7 +157,7 @@
             </ul>
           </article>
 
-          <article class="service-card">
+          <article class="service-card reveal">
             <h3>Workshops för ledning & team</h3>
             <p>
               Tillsammans översätter vi strategi, värdeord och mål till konkret vardag:
@@ -140,7 +172,7 @@
             </ul>
           </article>
 
-          <article class="service-card">
+          <article class="service-card reveal">
             <h3>Rådgivning & bollplank för chefer</h3>
             <p>
               Ett ärligt, tryggt bollplank där du kan prata om det som inte alltid hamnar i rapporter:
@@ -158,7 +190,7 @@
     </section>
 
     <!-- FILOSOFI / PRINCIPER -->
-    <section id="philosophy" class="section philosophy-section">
+    <section id="philosophy" class="section philosophy-section reveal">
       <div class="container two-column">
         <div class="section-intro">
           <h2>Min filosofi</h2>
@@ -182,7 +214,7 @@
     </section>
 
     <!-- KONTAKT -->
-    <section id="contact" class="section contact-section">
+    <section id="contact" class="section contact-section reveal">
       <div class="container two-column">
         <div class="section-intro">
           <h2>Kontakt</h2>
@@ -216,6 +248,9 @@
     </div>
   </footer>
 
+  <!-- GSAP för hero-animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
   <script>
     // Alltid börja överst vid sidladdning (förhindrar att browsern "minns" scroll)
     if ('scrollRestoration' in history) {
@@ -236,6 +271,14 @@
         navToggle.setAttribute('aria-expanded', String(!expanded));
         navLinks.classList.toggle('nav-open');
       });
+
+      // Stäng menyn när man klickar på en länk (mobil)
+      navLinks.addEventListener('click', (e) => {
+        if (e.target.classList.contains('nav-link')) {
+          navLinks.classList.remove('nav-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
     }
 
     // Lägg till skugga på header när man scrollar – känns mer "app-igt"
@@ -247,6 +290,55 @@
         header.classList.remove('scrolled');
       }
     });
+
+    // GSAP hero-animation
+    if (window.gsap) {
+      gsap.from(".hero-text", {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+      gsap.from(".hero-highlight-card", {
+        opacity: 0,
+        y: 20,
+        duration: 0.7,
+        delay: 0.15,
+        ease: "power2.out"
+      });
+    }
+
+    // Intersection Observer för "reveal"-sektioner
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Intersection Observer för aktiv meny-länk
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinksAll = document.querySelectorAll('.nav-link[href^="#"]');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinksAll.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    sections.forEach(section => sectionObserver.observe(section));
   </script>
 </body>
 </html>
