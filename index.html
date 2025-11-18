@@ -30,6 +30,10 @@
         <a href="#about" class="nav-link">Om mig</a>
         <a href="#services" class="nav-link">Tjänster</a>
         <a href="#philosophy" class="nav-link">Filosofi</a>
+        <a href="https://chatgpt.com/g/g-691b8026131881919eb9674fbd38fafd-lead-with-trust"
+           class="nav-link nav-gpt" target="_blank" rel="noopener">
+          GPT-rådgivning
+        </a>
         <a href="#contact" class="nav-link nav-cta">Kontakt</a>
       </nav>
     </div>
@@ -46,14 +50,14 @@
             Föreläsningar, workshops och rådgivning för organisationer som vill bygga tillit,
             ta sig igenom förändring och skapa en kultur där människor både mår bra och presterar bra.
           </p>
-         <div class="hero-actions">
-          <a href="#contact" class="btn primary-btn">Boka ett första samtal</a>
-          <a href="#services" class="btn secondary-btn">Se populära upplägg</a>
-          <a href="https://chatgpt.com/g/g-691b8026131881919eb9674fbd38fafd-lead-with-trust" 
-           class="btn tertiary-btn" target="_blank" rel="noopener">
-            Chatta med Lead with Trust
-          </a>
-        </div>
+          <div class="hero-actions">
+            <a href="#contact" class="btn primary-btn">Boka ett första samtal</a>
+            <a href="#services" class="btn secondary-btn">Se populära upplägg</a>
+            <a href="https://chatgpt.com/g/g-691b8026131881919eb9674fbd38fafd-lead-with-trust"
+               class="btn tertiary-btn" target="_blank" rel="noopener">
+              Chatta med Lead with Trust
+            </a>
+          </div>
           <p class="hero-note">
             Vanliga teman: psykologisk trygghet i praktiken, ledarskap efter omorganisation,
             medarbetarskap & ägarskap, kultur som håller när det blåser.
@@ -213,6 +217,12 @@
   </footer>
 
   <script>
+    // Alltid börja överst vid sidladdning (förhindrar att browsern "minns" scroll)
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     // Sätter aktuellt år i footern
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -227,6 +237,16 @@
         navLinks.classList.toggle('nav-open');
       });
     }
+
+    // Lägg till skugga på header när man scrollar – känns mer "app-igt"
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
   </script>
 </body>
 </html>
