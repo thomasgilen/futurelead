@@ -2,608 +2,807 @@
    Bas / Globalt
    ========= */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #faf7ff;
-  color: #1d1b24;
-  line-height: 1.6;
-  scroll-behavior: smooth; /* mjuk scroll när man klickar i menyn */
-}
-
-/* En centrerad maxbredd för innehåll */
-.container {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* =========
-   Header / Navigation
-   ========= */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(250, 247, 255, 0.96);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid #e2d9ff;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-}
-
-/* skugga vid scroll för mer modern känsla */
-.site-header.scrolled {
-  box-shadow: 0 10px 25px rgba(33, 18, 64, 0.18);
-  border-bottom-color: rgba(195, 178, 245, 0.8);
-  background: rgba(248, 244, 255, 0.98);
-}
-
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.9rem 0; /* mer luft över/under även på desktop */
-  gap: 1rem;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.logo-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #ffb36b, #f06ea9);
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-}
-
-.logo-text {
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #3c2b59;
-}
-
-/* Desktop-nav */
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  font-size: 0.9rem;
-}
-
-.nav-link {
-  position: relative;
-  text-decoration: none;
-  color: #3e2f5c;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding-bottom: 0.2rem;
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.1rem;
-  width: 0;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #f06ea9, #ffb36b);
-  transition: width 0.22s ease;
-}
-
-/* aktiv länk vid scroll */
-.nav-link.active::after {
-  width: 100%;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-.nav-link:hover {
-  color: #2a1f47;
-}
-
-/* GPT-länk i menyn – lite "verktygskänsla" */
-
-.nav-gpt {
-  font-weight: 600;
-  font-size: 0.85rem;
-}
-
-/* Sista länken som CTA-pill */
-
-.nav-cta {
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid rgba(225, 95, 155, 0.4);
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.nav-cta::after {
-  display: none;
-}
-
-.nav-cta:hover {
-  background: linear-gradient(135deg, #f06ea9, #ffb36b);
-  color: #ffffff;
-  border-color: transparent;
-}
-
-/* Hamburgerknapp (mobil) */
-
-.nav-toggle {
-  display: none;
-  border: none;
-  background: transparent;
-  padding: 0.3rem;
-  cursor: pointer;
-}
-
-.nav-toggle-line {
-  display: block;
-  width: 20px;
-  height: 2px;
-  border-radius: 999px;
-  background: #3e2f5c;
-  transition: transform 0.18s ease, opacity 0.18s ease;
-}
-
-.nav-toggle-line + .nav-toggle-line {
-  margin-top: 5px;
-}
-
-/* =========
-   Sektioner
-   ========= */
-
-.section {
-  padding: 4rem 0;
-}
-
-.section-header-center {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.section-header-center h2 {
-  font-size: 1.9rem;
-  margin-bottom: 0.5rem;
-}
-
-.section-kicker {
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #8b7aa6;
-  font-weight: 600;
-}
-
-.two-column {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
-  gap: 2.75rem;
-  align-items: flex-start;
-}
-
-.section-intro h2 {
-  font-size: 1.9rem;
-  margin: 0 0 0.75rem;
-}
-
-.section-body p {
-  margin: 0 0 1rem;
-}
-
-/* Reveal-animation (Intersection Observer) */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.reveal.reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =========
-   HERO
-   ========= */
-
-.hero-section {
-  padding: 4.5rem 0 4rem;
-  background: radial-gradient(circle at top left, #ffe9d7 0, transparent 55%),
-              radial-gradient(circle at top right, #ffd9f1 0, transparent 55%),
-              #faf7ff;
-}
-
-.hero-content {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
-  gap: 2.75rem;
-  align-items: center;
-}
-
-.hero-tagline {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #8b7aa6;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
-
-.hero-text h1 {
-  font-size: clamp(2rem, 3vw, 2.6rem);
-  line-height: 1.2;
-  margin: 0 0 1.1rem;
-  color: #241733;
-}
-
-.hero-subtitle {
-  font-size: 1rem;
-  max-width: 32rem;
-  color: #5a4a71;
-  margin-bottom: 1.5rem;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
-.hero-note {
-  font-size: 0.9rem;
-  color: #7c6a96;
-}
-
-/* =========
-   Knappar
-   ========= */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.7rem 1.3rem;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease, color 0.2s ease;
-  white-space: nowrap;
-}
-
-.primary-btn {
-  background: linear-gradient(135deg, #f06ea9, #ffb36b);
-  color: #fff;
-  box-shadow: 0 10px 20px rgba(240, 110, 169, 0.25);
-}
-
-.primary-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 14px 26px rgba(240, 110, 169, 0.3);
-}
-
-.secondary-btn {
-  background: #fff;
-  border: 1px solid #e2d9ff;
-  color: #44365e;
-}
-
-.secondary-btn:hover {
-  background: #f7f3ff;
-}
-
-/* GPT-knapp i hero */
-
-.tertiary-btn {
-  background: transparent;
-  border: 1px dashed #e2d9ff;
-  color: #5a4a71;
-  font-weight: 500;
-}
-
-.tertiary-btn:hover {
-  background: #f4efff;
-  border-style: solid;
-}
-
-/* =========
-   Hero-kort (citat)
-   ========= */
-
-.hero-highlight-card {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 1.4rem 1.5rem;
-  box-shadow: 0 18px 40px rgba(49, 34, 83, 0.08);
-  border: 1px solid rgba(211, 196, 252, 0.7);
-}
-
-.card-label {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #a191c3;
-  font-weight: 600;
-  margin-bottom: 0.6rem;
-}
-
-.card-quote {
-  font-size: 0.99rem;
-  color: #3a2d4f;
-  margin-bottom: 0.75rem;
-}
-
-.card-meta {
-  font-size: 0.85rem;
-  color: #8b7aa6;
-}
-
-/* =========
-   Om mig
-   ========= */
-
-.about-section {
-  background: #fff;
-}
-
-/* =========
-   Tjänster
-   ========= */
-
-.services-section {
-  background: #faf7ff;
-}
-
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.75rem;
-}
-
-.service-card {
-  background: #fff;
-  border-radius: 18px;
-  padding: 1.5rem 1.6rem;
-  border: 1px solid #e2d9ff;
-  box-shadow: 0 12px 30px rgba(50, 36, 88, 0.05);
-}
-
-.service-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-  font-size: 1.15rem;
-  color: #2a1f47;
-}
-
-.service-card p {
-  margin-bottom: 0.9rem;
-  color: #5c4d76;
-}
-
-.service-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.service-card li {
-  position: relative;
-  padding-left: 1.1rem;
-  margin-bottom: 0.45rem;
-  font-size: 0.92rem;
-  color: #6b5a87;
-}
-
-.service-card li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: #f06ea9;
-}
-
-/* =========
-   Filosofi / Principer
-   ========= */
-
-.philosophy-section {
-  background: #fff;
-}
-
-.pill-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.pill-list li {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.45rem 0.8rem;
-  border-radius: 999px;
-  background: #f4efff;
-  font-size: 0.9rem;
-  color: #3b2c57;
-}
-
-/* =========
-   Kontakt
-   ========= */
-
-.contact-section {
-  background: #faf7ff;
-}
-
-.contact-box {
-  padding: 1.1rem 1.25rem;
-  border-radius: 14px;
-  background: #fff;
-  border: 1px solid #e2d9ff;
-  margin: 0.3rem 0 0.8rem;
-}
-
-.contact-box a {
-  color: #e15f9b;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.contact-box a:hover {
-  text-decoration: underline;
-}
-
-.contact-note {
-  font-size: 0.9rem;
-  color: #7c6a96;
-}
-
-/* =========
-   Footer
-   ========= */
-
-.site-footer {
-  padding: 1.8rem 0 2.1rem;
-  background: #1f182f;
-  color: #ebe6ff;
-}
-
-.footer-content {
-  text-align: center;
-  font-size: 0.9rem;
-}
-
-.footer-sub {
-  margin-top: 0.35rem;
-  font-size: 0.85rem;
-  color: #b9aedb;
-}
-
-/* =========
-   Responsiv nav
-   ========= */
-
-@media (max-width: 800px) {
-  .site-header .container {
-    padding: 0 1.25rem;
-  }
-
-  .nav-container {
-    padding: 0.8rem 0; /* mer luft över/under på mobil */
-  }
-
-  .nav-toggle {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    margin: 0;
-    padding: 0.9rem 1.5rem 1.2rem;
-    background: rgba(250, 247, 255, 0.98);
-    border-bottom: 1px solid #e2d9ff;
-    display: none;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .nav-links.nav-open {
-    display: flex;
-  }
-
-  .nav-link {
-    font-size: 0.95rem;
-    text-transform: none;
-    letter-spacing: 0.01em;
-  }
-
-  .nav-cta {
-    align-self: flex-start;
-    margin-top: 0.2rem;
-  }
-}
-
-/* =========
-   Övrig responsivitet
-   ========= */
-
-@media (max-width: 900px) {
-  .hero-content {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-highlight-card {
-    margin-top: 1.2rem;
-  }
-
-  .two-column {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .cards-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .section {
-    padding: 3.25rem 0;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-section {
-    padding-top: 3.5rem;
-  }
-
-  .hero-text h1 {
-    font-size: 1.9rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-}
+   *,
+   *::before,
+   *::after {
+     box-sizing: border-box;
+   }
+   
+   html,
+   body {
+     margin: 0;
+     padding: 0;
+   }
+   
+   body {
+     font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+     background: #faf7ff;
+     color: #1d1b24;
+     line-height: 1.6;
+     scroll-behavior: smooth; /* mjuk scroll när man klickar i menyn */
+   }
+   
+   /* En centrerad maxbredd för innehåll */
+   .container {
+     width: 100%;
+     max-width: 1100px;
+     margin: 0 auto;
+     padding: 0 1.5rem;
+   }
+   
+   /* =========
+      Header / Navigation
+      ========= */
+   
+   .site-header {
+     position: sticky;
+     top: 0;
+     z-index: 100;
+     background: rgba(250, 247, 255, 0.96);
+     backdrop-filter: blur(10px);
+     border-bottom: 1px solid #e2d9ff;
+     transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+   }
+   
+   /* skugga vid scroll för mer modern känsla */
+   .site-header.scrolled {
+     box-shadow: 0 10px 25px rgba(33, 18, 64, 0.18);
+     border-bottom-color: rgba(195, 178, 245, 0.8);
+     background: rgba(248, 244, 255, 0.98);
+   }
+   
+   .nav-container {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 1rem 0; /* mer luft över/under även på desktop */
+     gap: 1rem;
+   }
+   
+   .logo {
+     display: flex;
+     align-items: center;
+     gap: 0.55rem;
+   }
+   
+   .logo-mark {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     width: 36px;
+     height: 36px;
+     border-radius: 999px;
+     background: linear-gradient(135deg, #ffb36b, #f06ea9);
+     color: #fff;
+     font-weight: 700;
+     font-size: 0.9rem;
+     letter-spacing: 0.05em;
+   }
+   
+   .logo-text {
+     font-weight: 600;
+     font-size: 0.95rem;
+     letter-spacing: 0.08em;
+     text-transform: uppercase;
+     color: #3c2b59;
+   }
+   
+   /* Desktop-nav */
+   
+   .nav-links {
+     display: flex;
+     align-items: center;
+     gap: 1.2rem;
+     font-size: 0.9rem;
+   }
+   
+   .nav-link {
+     position: relative;
+     text-decoration: none;
+     color: #3e2f5c;
+     font-weight: 500;
+     letter-spacing: 0.04em;
+     text-transform: uppercase;
+     padding-bottom: 0.2rem;
+   }
+   
+   .nav-link::after {
+     content: "";
+     position: absolute;
+     left: 0;
+     bottom: -0.1rem;
+     width: 0;
+     height: 2px;
+     border-radius: 999px;
+     background: linear-gradient(135deg, #f06ea9, #ffb36b);
+     transition: width 0.22s ease;
+   }
+   
+   /* aktiv länk vid scroll */
+   .nav-link.active::after {
+     width: 100%;
+   }
+   
+   .nav-link:hover::after {
+     width: 100%;
+   }
+   
+   .nav-link:hover {
+     color: #2a1f47;
+   }
+   
+   /* GPT-länk i menyn – lite "verktygskänsla" */
+   
+   .nav-gpt {
+     font-weight: 600;
+     font-size: 0.85rem;
+   }
+   
+   /* Sista länken som CTA-pill */
+   
+   .nav-cta {
+     padding: 0.4rem 0.9rem;
+     border-radius: 999px;
+     border: 1px solid rgba(225, 95, 155, 0.4);
+     background: rgba(255, 255, 255, 0.9);
+   }
+   
+   .nav-cta::after {
+     display: none;
+   }
+   
+   .nav-cta:hover {
+     background: linear-gradient(135deg, #f06ea9, #ffb36b);
+     color: #ffffff;
+     border-color: transparent;
+   }
+   
+   /* Hamburgerknapp (mobil) */
+   
+   .nav-toggle {
+     display: none;
+     border: none;
+     background: transparent;
+     padding: 0.3rem;
+     cursor: pointer;
+   }
+   
+   .nav-toggle-line {
+     display: block;
+     width: 20px;
+     height: 2px;
+     border-radius: 999px;
+     background: #3e2f5c;
+     transition: transform 0.18s ease, opacity 0.18s ease;
+   }
+   
+   .nav-toggle-line + .nav-toggle-line {
+     margin-top: 5px;
+   }
+   
+   /* =========
+      Sektioner
+      ========= */
+   
+   .section {
+     padding: 4rem 0;
+   }
+   
+   .section-header-center {
+     text-align: center;
+     margin-bottom: 2.5rem;
+   }
+   
+   .section-header-center h2 {
+     font-size: 1.9rem;
+     margin-bottom: 0.5rem;
+   }
+   
+   .section-kicker {
+     font-size: 0.95rem;
+     text-transform: uppercase;
+     letter-spacing: 0.12em;
+     color: #8b7aa6;
+     font-weight: 600;
+   }
+   
+   .two-column {
+     display: grid;
+     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
+     gap: 2.75rem;
+     align-items: flex-start;
+   }
+   
+   .section-intro h2 {
+     font-size: 1.9rem;
+     margin: 0 0 0.75rem;
+   }
+   
+   .section-body p {
+     margin: 0 0 1rem;
+   }
+   
+   /* Reveal-animation (Intersection Observer) */
+   
+   .reveal {
+     opacity: 0;
+     transform: translateY(16px);
+     transition: opacity 0.6s ease, transform 0.6s ease;
+   }
+   
+   .reveal.reveal-visible {
+     opacity: 1;
+     transform: translateY(0);
+   }
+   
+   /* =========
+      HERO
+      ========= */
+   
+   .hero-section {
+     padding: 4.5rem 0 4rem;
+     background: radial-gradient(circle at top left, #ffe9d7 0, transparent 55%),
+                 radial-gradient(circle at top right, #ffd9f1 0, transparent 55%),
+                 #faf7ff;
+   }
+   
+   .hero-content {
+     display: grid;
+     grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
+     gap: 2.75rem;
+     align-items: center;
+   }
+   
+   .hero-tagline {
+     font-size: 0.9rem;
+     text-transform: uppercase;
+     letter-spacing: 0.16em;
+     color: #8b7aa6;
+     font-weight: 600;
+     margin-bottom: 0.75rem;
+   }
+   
+   .hero-text h1 {
+     font-size: clamp(2rem, 3vw, 2.6rem);
+     line-height: 1.2;
+     margin: 0 0 1.1rem;
+     color: #241733;
+   }
+   
+   .hero-subtitle {
+     font-size: 1rem;
+     max-width: 32rem;
+     color: #5a4a71;
+     margin-bottom: 1.5rem;
+   }
+   
+   .hero-actions {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 0.75rem;
+     margin-bottom: 1.25rem;
+   }
+   
+   .hero-note {
+     font-size: 0.9rem;
+     color: #7c6a96;
+   }
+   
+   /* =========
+      Knappar
+      ========= */
+   
+   .btn {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     padding: 0.7rem 1.3rem;
+     border-radius: 999px;
+     font-size: 0.95rem;
+     font-weight: 600;
+     text-decoration: none;
+     cursor: pointer;
+     border: none;
+     outline: none;
+     transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease, color 0.2s ease;
+     white-space: nowrap;
+   }
+   
+   .primary-btn {
+     background: linear-gradient(135deg, #f06ea9, #ffb36b);
+     color: #fff;
+     box-shadow: 0 10px 20px rgba(240, 110, 169, 0.25);
+   }
+   
+   .primary-btn:hover {
+     transform: translateY(-1px);
+     box-shadow: 0 14px 26px rgba(240, 110, 169, 0.3);
+   }
+   
+   .secondary-btn {
+     background: #fff;
+     border: 1px solid #e2d9ff;
+     color: #44365e;
+   }
+   
+   .secondary-btn:hover {
+     background: #f7f3ff;
+   }
+   
+   /* GPT-knapp i hero */
+   
+   .tertiary-btn {
+     background: transparent;
+     border: 1px dashed #e2d9ff;
+     color: #5a4a71;
+     font-weight: 500;
+   }
+   
+   .tertiary-btn:hover {
+     background: #f4efff;
+     border-style: solid;
+   }
+   
+   /* =========
+      Hero-kort (citat)
+      ========= */
+   
+   .hero-highlight-card {
+     background: #ffffff;
+     border-radius: 18px;
+     padding: 1.4rem 1.5rem;
+     box-shadow: 0 18px 40px rgba(49, 34, 83, 0.08);
+     border: 1px solid rgba(211, 196, 252, 0.7);
+   }
+   
+   .card-label {
+     font-size: 0.8rem;
+     text-transform: uppercase;
+     letter-spacing: 0.16em;
+     color: #a191c3;
+     font-weight: 600;
+     margin-bottom: 0.6rem;
+   }
+   
+   .card-quote {
+     font-size: 0.99rem;
+     color: #3a2d4f;
+     margin-bottom: 0.75rem;
+   }
+   
+   .card-meta {
+     font-size: 0.85rem;
+     color: #8b7aa6;
+   }
+   
+   /* =========
+      Om mig
+      ========= */
+   
+   .about-section {
+     background: #fff;
+   }
+   
+   /* =========
+      Tjänster
+      ========= */
+   
+   .services-section {
+     background: #faf7ff;
+   }
+   
+   .cards-grid {
+     display: grid;
+     grid-template-columns: repeat(3, minmax(0, 1fr));
+     gap: 1.75rem;
+   }
+   
+   .service-card {
+     background: #fff;
+     border-radius: 18px;
+     padding: 1.5rem 1.6rem;
+     border: 1px solid #e2d9ff;
+     box-shadow: 0 12px 30px rgba(50, 36, 88, 0.05);
+   }
+   
+   .service-card h3 {
+     margin-top: 0;
+     margin-bottom: 0.75rem;
+     font-size: 1.15rem;
+     color: #2a1f47;
+   }
+   
+   .service-card p {
+     margin-bottom: 0.9rem;
+     color: #5c4d76;
+   }
+   
+   .service-card ul {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+   }
+   
+   .service-card li {
+     position: relative;
+     padding-left: 1.1rem;
+     margin-bottom: 0.45rem;
+     font-size: 0.92rem;
+     color: #6b5a87;
+   }
+   
+   .service-card li::before {
+     content: "•";
+     position: absolute;
+     left: 0;
+     top: 0;
+     color: #f06ea9;
+   }
+   
+   /* =========
+      E-böcker – modern karusell
+      ========= */
+   
+   .ebook-section {
+     background: #fff;
+   }
+   
+   .ebook-header {
+     margin-bottom: 2rem;
+   }
+   
+   .ebook-carousel-wrapper {
+     position: relative;
+     padding: 0.5rem 2.2rem 1rem; /* plats för pilarna till vänster/höger */
+   }
+   
+   .ebook-carousel {
+     display: flex;
+     gap: 1.5rem;
+     overflow-x: auto;
+     scroll-snap-type: x mandatory;
+     padding: 0.25rem 0;
+     scroll-behavior: smooth;
+     -webkit-overflow-scrolling: touch;
+   }
+   
+   .ebook-carousel::-webkit-scrollbar {
+     height: 6px;
+   }
+   
+   .ebook-carousel::-webkit-scrollbar-track {
+     background: transparent;
+   }
+   
+   .ebook-carousel::-webkit-scrollbar-thumb {
+     background: rgba(171, 157, 210, 0.7);
+     border-radius: 999px;
+   }
+   
+   .ebook-card {
+     flex: 0 0 280px;
+     max-width: 320px;
+     background: #faf7ff;
+     border-radius: 18px;
+     padding: 1.4rem 1.4rem 1.5rem;
+     border: 1px solid #e2d9ff;
+     box-shadow: 0 12px 28px rgba(50, 36, 88, 0.06);
+     scroll-snap-align: start;
+     transition: transform 0.18s ease, box-shadow 0.18s ease;
+   }
+   
+   .ebook-card:hover {
+     transform: translateY(-2px);
+     box-shadow: 0 16px 34px rgba(50, 36, 88, 0.12);
+   }
+   
+   .ebook-card h3 {
+     margin: 0.9rem 0 0.6rem;
+     font-size: 1.1rem;
+     color: #2a1f47;
+   }
+   
+   .ebook-card p {
+     margin: 0 0 0.6rem;
+     font-size: 0.93rem;
+     color: #5a4a71;
+   }
+   
+   .ebook-card ul {
+     list-style: none;
+     padding: 0;
+     margin: 0 0 0.7rem;
+   }
+   
+   .ebook-card li {
+     position: relative;
+     padding-left: 1rem;
+     margin-bottom: 0.35rem;
+     font-size: 0.9rem;
+     color: #6b5a87;
+   }
+   
+   .ebook-card li::before {
+     content: "•";
+     position: absolute;
+     left: 0;
+     top: 0;
+     color: #f06ea9;
+   }
+   
+   .ebook-price {
+     font-weight: 600;
+     margin: 0.2rem 0 0.8rem;
+   }
+   
+   .ebook-button {
+     margin-bottom: 0.4rem;
+   }
+   
+   .ebook-note {
+     font-size: 0.85rem;
+     color: #7c6a96;
+   }
+   
+   /* Enkel "fejk"-omslag tills riktiga bilder finns */
+   .ebook-cover-placeholder {
+     width: 100%;
+     aspect-ratio: 4 / 3;
+     border-radius: 14px;
+     background: radial-gradient(circle at top left, #f06ea9 0, #ffb36b 50%, #ffefdf 100%);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: #fff;
+     font-weight: 600;
+     font-size: 0.9rem;
+     text-align: center;
+     padding: 0.5rem;
+   }
+   
+   /* Navigationsknappar – overlay, centrerade vertikalt */
+   
+   .ebook-nav-btn {
+     position: absolute;
+     top: 50%;
+     transform: translateY(-50%);
+     border: none;
+     background: #ffffff;
+     border-radius: 999px;
+     width: 34px;
+     height: 34px;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     box-shadow: 0 8px 20px rgba(49, 34, 83, 0.18);
+     cursor: pointer;
+     font-size: 1.35rem;
+     line-height: 1;
+     color: #5a4a71;
+     transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease;
+   }
+   
+   .ebook-nav-btn:hover {
+     transform: translateY(-50%) translateY(-1px);
+     box-shadow: 0 12px 26px rgba(49, 34, 83, 0.25);
+   }
+   
+   .ebook-prev {
+     left: 0.4rem;
+   }
+   
+   .ebook-next {
+     right: 0.4rem;
+   }
+   
+   /* Dots under karusellen */
+   
+   .ebook-dots {
+     display: flex;
+     justify-content: center;
+     gap: 0.4rem;
+     margin-top: 0.4rem;
+   }
+   
+   .ebook-dot {
+     width: 8px;
+     height: 8px;
+     border-radius: 999px;
+     border: none;
+     padding: 0;
+     background: #d6cbed;
+     cursor: pointer;
+     opacity: 0.6;
+     transform: scale(1);
+     transition: opacity 0.15s ease, transform 0.15s ease, background 0.15s ease;
+   }
+   
+   .ebook-dot.active {
+     opacity: 1;
+     background: #f06ea9;
+     transform: scale(1.4);
+   }
+   
+   /* =========
+      Filosofi / Principer
+      ========= */
+   
+   .philosophy-section {
+     background: #fff;
+   }
+   
+   .pill-list {
+     list-style: none;
+     padding: 0;
+     margin: 0 0 1.25rem;
+     display: flex;
+     flex-direction: column;
+     gap: 0.4rem;
+   }
+   
+   .pill-list li {
+     display: inline-flex;
+     align-items: center;
+     padding: 0.45rem 0.8rem;
+     border-radius: 999px;
+     background: #f4efff;
+     font-size: 0.9rem;
+     color: #3b2c57;
+   }
+   
+   /* =========
+      Kontakt
+      ========= */
+   
+   .contact-section {
+     background: #faf7ff;
+   }
+   
+   .contact-box {
+     padding: 1.1rem 1.25rem;
+     border-radius: 14px;
+     background: #fff;
+     border: 1px solid #e2d9ff;
+     margin: 0.3rem 0 0.8rem;
+   }
+   
+   .contact-box a {
+     color: #e15f9b;
+     text-decoration: none;
+     font-weight: 500;
+   }
+   
+   .contact-box a:hover {
+     text-decoration: underline;
+   }
+   
+   .contact-note {
+     font-size: 0.9rem;
+     color: #7c6a96;
+   }
+   
+   /* =========
+      Footer
+      ========= */
+   
+   .site-footer {
+     padding: 1.8rem 0 2.1rem;
+     background: #1f182f;
+     color: #ebe6ff;
+   }
+   
+   .footer-content {
+     text-align: center;
+     font-size: 0.9rem;
+   }
+   
+   .footer-sub {
+     margin-top: 0.35rem;
+     font-size: 0.85rem;
+     color: #b9aedb;
+   }
+   
+   /* =========
+      Responsiv nav
+      ========= */
+   
+   @media (max-width: 800px) {
+     .site-header .container {
+       padding: 0 1.25rem;
+     }
+   
+     .nav-container {
+       padding: 0.9rem 0; /* lite extra luft på mobil också */
+     }
+   
+     .nav-toggle {
+       display: inline-flex;
+       flex-direction: column;
+       justify-content: center;
+     }
+   
+     .nav-links {
+       position: absolute;
+       top: 100%;
+       right: 0;
+       left: 0;
+       margin: 0;
+       padding: 0.9rem 1.5rem 1.2rem;
+       background: rgba(250, 247, 255, 0.98);
+       border-bottom: 1px solid #e2d9ff;
+       display: none;
+       flex-direction: column;
+       gap: 0.6rem;
+     }
+   
+     .nav-links.nav-open {
+       display: flex;
+     }
+   
+     .nav-link {
+       font-size: 0.95rem;
+       text-transform: none;
+       letter-spacing: 0.01em;
+     }
+   
+     .nav-cta {
+       align-self: flex-start;
+       margin-top: 0.2rem;
+     }
+   }
+   
+   /* =========
+      Övrig responsivitet
+      ========= */
+   
+   @media (max-width: 900px) {
+     .hero-content {
+       grid-template-columns: minmax(0, 1fr);
+     }
+   
+     .hero-highlight-card {
+       margin-top: 1.2rem;
+     }
+   
+     .two-column {
+       grid-template-columns: minmax(0, 1fr);
+     }
+   
+     .cards-grid {
+       grid-template-columns: minmax(0, 1fr);
+     }
+   
+     .section {
+       padding: 3.25rem 0;
+     }
+   
+     /* Karusell på mellanskärmar: korten får ta mer bredd */
+     .ebook-card {
+       flex: 0 0 70%;
+     }
+   }
+   
+   @media (max-width: 600px) {
+     .hero-section {
+       padding-top: 3.5rem;
+     }
+   
+     .hero-text h1 {
+       font-size: 1.9rem;
+     }
+   
+     .hero-actions {
+       flex-direction: column;
+       align-items: stretch;
+     }
+   
+     /* Karusell på mobil: ett kort i taget, pilarna fortfarande mitt i sidan */
+     .ebook-carousel-wrapper {
+       padding-inline: 2.1rem;
+     }
+   
+     .ebook-card {
+       flex: 0 0 82%;
+     }
+   }
+   
