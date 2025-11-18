@@ -1,9 +1,3 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/index.html b/index.html
-index 91ab08376d375e0a07e5d5c52331e6a8d7161819..549d4b15a07a17019425a096831d2fbeef91bae9 100644
---- a/index.html
-+++ b/index.html
-@@ -1,784 +1,46 @@
  <!DOCTYPE html>
  <html lang="sv">
  <head>
@@ -15,7 +9,8 @@ index 91ab08376d375e0a07e5d5c52331e6a8d7161819..549d4b15a07a17019425a096831d2fbe
    <!-- Modernt typsnitt -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
++  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
  
 -  <style>
 -    :root {
@@ -780,21 +775,53 @@ index 91ab08376d375e0a07e5d5c52331e6a8d7161819..549d4b15a07a17019425a096831d2fbe
              <div class="brand-text-sub">Lead with trust</div>
            </div>
          </div>
-         <div class="nav-links">
-           <a href="#tjanster">Tjänster</a>
-           <a href="#podd">Podcast</a>
-           <a href="#artiklar">Artiklar</a>
-           <a href="#kontakt">Kontakt</a>
+-        <div class="nav-links">
+-          <a href="#tjanster">Tjänster</a>
+-          <a href="#podd">Podcast</a>
+-          <a href="#artiklar">Artiklar</a>
+-          <a href="#kontakt">Kontakt</a>
++        <div class="nav-right" id="nav-menu">
++          <div class="nav-links">
++            <a href="#tjanster">Tjänster</a>
++            <a href="#podd">Podcast</a>
++            <a href="#artiklar">Artiklar</a>
++            <a href="#kontakt">Kontakt</a>
++          </div>
            <button class="nav-cta" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
              Boka samtal
            </button>
          </div>
++        <button class="nav-toggle" type="button" aria-label="Öppna meny" aria-expanded="false">
++          <span></span>
++          <span></span>
++          <span></span>
++        </button>
        </nav>
      </header>
  
      <main>
        <!-- HERO -->
-@@ -829,51 +91,138 @@
+       <section class="section">
+         <div class="hero">
+           <div>
+             <div class="hero-tag">
+               <div class="hero-tag-dot"></div>
+               <div>Tillitsbaserat ledarskap, på riktigt</div>
+             </div>
+             <h1 class="hero-title">
+               Mindre kontroll.<br />
+               <span>Mer ansvar.</span>
+             </h1>
+             <p class="hero-subtitle">
+               Futurelead hjälper chefer och team att bygga psykologisk trygghet, tydlighet och ansvarstagande – med modern forskning i ryggen och vardagen som utgångspunkt.
+             </p>
+             <p class="hero-why">
+               Vår grundtanke är enkel: människor vill bidra. När vi ger dem trygghet, riktning och förtroende, uppstår både bättre resultat och en mänskligare arbetsplats.
+             </p>
+ 
+             <div class="hero-cta-row">
+               <button class="btn-primary" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
+@@ -829,51 +98,138 @@
                  <div class="metric">
                    <div class="metric-label">Ärlig feedback</div>
                    <div class="metric-value">+47%</div>
@@ -933,7 +960,7 @@ index 91ab08376d375e0a07e5d5c52331e6a8d7161819..549d4b15a07a17019425a096831d2fbe
              <div class="super-title">Vi står i en förändring</div>
              <div class="super-text">För organisationer som vill göra en tydlig kulturresa – inte bara byta presentationer.</div>
            </div>
-@@ -1092,28 +441,79 @@
+@@ -1092,28 +448,103 @@
                <label for="organisation">Organisation (valfritt)</label>
                <input type="text" id="organisation" name="organisation" placeholder="Företag / organisation" />
              </div>
@@ -959,6 +986,30 @@ index 91ab08376d375e0a07e5d5c52331e6a8d7161819..549d4b15a07a17019425a096831d2fbe
  
    <script>
      document.getElementById("year").textContent = new Date().getFullYear();
++
++    const navToggle = document.querySelector('.nav-toggle');
++    const navMenu = document.getElementById('nav-menu');
++    const body = document.body;
++
++    const closeNav = () => {
++      body.classList.remove('nav-open');
++      navToggle?.setAttribute('aria-expanded', 'false');
++    };
++
++    navToggle?.addEventListener('click', () => {
++      const isOpen = body.classList.toggle('nav-open');
++      navToggle.setAttribute('aria-expanded', isOpen);
++    });
++
++    navMenu?.querySelectorAll('a, button').forEach((el) => {
++      el.addEventListener('click', closeNav);
++    });
++
++    document.addEventListener('click', (event) => {
++      if (body.classList.contains('nav-open') && !navMenu?.contains(event.target) && !navToggle?.contains(event.target)) {
++        closeNav();
++      }
++    });
 +
 +    const tiltTargets = document.querySelectorAll('.future-card, .lab-card, .hero-card');
 +    const handleTilt = (event) => {
@@ -1013,6 +1064,3 @@ index 91ab08376d375e0a07e5d5c52331e6a8d7161819..549d4b15a07a17019425a096831d2fbe
    </script>
  </body>
  </html>
- 
-EOF
-)
