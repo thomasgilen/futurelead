@@ -1,1 +1,884 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ditt ledarskapsvarumärke</title>
+  <meta name="description" content="Hemsida om modernt, tillitsbaserat ledarskap.">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --accent: #fbbf24;
+      --accent-soft: #f59e0b;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --card: #020617;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.55);
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.65));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #fef9c3, #fbbf24, #c2410c);
+      box-shadow: 0 12px 30px rgba(248, 250, 252, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .brand-text-main {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      border-bottom-color: rgba(248, 250, 252, 0.35);
+    }
+
+    .nav-cta {
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 250, 251, 0.2);
+      background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.15), rgba(15, 23, 42, 0.9));
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-cta span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 36px 20px;
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.35);
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 4vw, 40px);
+      line-height: 1.1;
+      margin: 0 0 16px;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-bottom: 20px;
+    }
+
+    .hero-bullets {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .hero-bullet {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .hero-bullet-icon {
+      font-size: 16px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color: #111827;
+      cursor: pointer;
+      box-shadow: 0 16px 35px rgba(245, 158, 11, 0.35);
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 13px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .hero-caption {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Hero – right side "card" */
+
+    .hero-card {
+      border-radius: 24px;
+      background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.16), rgba(15, 23, 42, 0.96));
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 16px 16px 14px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-card-inner {
+      border-radius: 18px;
+      padding: 18px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.6));
+      border: 1px solid rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-card-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .metric {
+      padding: 10px 10px 9px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .metric-note {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .hero-quote {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(75, 85, 99, 0.7);
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .hero-quote strong {
+      font-style: normal;
+      color: var(--text-main);
+    }
+
+    /* Section: Tjänster */
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin: 0 0 4px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .chip {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      padding: 16px 16px 14px;
+      border-radius: var(--radius-lg);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.5);
+    }
+
+    .card-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .card-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .card-meta {
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    /* Section: Om mig */
+
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 26px;
+    }
+
+    .about-text {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .about-text p {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .about-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .about-list li {
+      margin-bottom: 6px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .about-list span {
+      font-size: 16px;
+    }
+
+    .about-highlight {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    .about-card {
+      padding: 16px 16px 14px;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top, rgba(59, 130, 246, 0.25), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .about-card h3 {
+      font-size: 15px;
+      margin-top: 0;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .about-card p {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .about-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .about-pill {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(191, 219, 254, 0.6);
+    }
+
+    /* Section: Kontakt */
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 26px;
+    }
+
+    .contact-info {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .contact-info p {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .contact-highlight {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .contact-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .contact-form {
+      padding: 16px 16px 14px;
+      border-radius: var(--radius-lg);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.6);
+      font-size: 13px;
+    }
+
+    .contact-form-row {
+      margin-bottom: 10px;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-main);
+      font-size: 13px;
+      font-family: inherit;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .contact-form small {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    footer {
+      border-top: 1px solid rgba(51, 65, 85, 0.8);
+      padding: 18px 20px 24px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Responsivitet */
+
+    @media (max-width: 880px) {
+      .hero,
+      .about,
+      .contact {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 26px;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section {
+        padding-inline: 16px;
+      }
+
+      .hero {
+        gap: 22px;
+      }
+
+      .cards {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Navigation -->
+    <header>
+      <nav class="nav">
+        <div class="nav-left">
+          <div class="brand-mark">T</div>
+          <div>
+            <div class="brand-text-main">Ditt varumärke</div>
+            <div class="brand-text-sub">Tillitsbaserat ledarskap</div>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#tjanster">Tjänster</a>
+          <a href="#ommig">Om mig</a>
+          <a href="#kontakt">Kontakt</a>
+          <button class="nav-cta" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
+            <div>För ledare & team</div>
+            <span>Boka samtal</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="section">
+        <div class="hero">
+          <div>
+            <div class="hero-tag">
+              <div class="hero-tag-dot"></div>
+              <div>Ledarskap byggt på tillit</div>
+            </div>
+            <h1 class="hero-title">
+              Mindre kontroll. <span>Mer ansvar.</span><br />
+              Ledarskap som håller i vardagen.
+            </h1>
+            <p class="hero-subtitle">
+              Jag hjälper chefer och team att bygga psykologisk trygghet, tydlighet och ansvarstagande – utan floskler.
+              Forskning i ryggen, vardagen i fokus.
+            </p>
+
+            <div class="hero-bullets">
+              <div class="hero-bullet">
+                <div class="hero-bullet-icon">▸</div>
+                <div>Workshops om psykologisk trygghet och modernt medarbetarskap.</div>
+              </div>
+              <div class="hero-bullet">
+                <div class="hero-bullet-icon">▸</div>
+                <div>Stöd till ledningsgrupper som vill öka engagemang och ansvar.</div>
+              </div>
+              <div class="hero-bullet">
+                <div class="hero-bullet-icon">▸</div>
+                <div>Föreläsningar där forskning möter ärliga berättelser från verkligheten.</div>
+              </div>
+            </div>
+
+            <div class="hero-cta-row">
+              <button class="btn-primary" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
+                Boka ett första samtal (30 min)
+              </button>
+              <button class="btn-secondary" onclick="document.getElementById('tjanster').scrollIntoView({behavior:'smooth'})">
+                Se upplägg & tjänster
+              </button>
+            </div>
+            <div class="hero-caption">
+              Inga färdiga powerpoints-svar. Vi utgår från er vardag, era hinder och era mål.
+            </div>
+          </div>
+
+          <!-- Hero card -->
+          <aside class="hero-card" aria-label="Kort överblick">
+            <div class="hero-card-inner">
+              <div class="hero-card-header">
+                <div>
+                  <div class="hero-card-title">När kulturen börjar ändras</div>
+                  <div>Små vardagssignaler att hålla koll på</div>
+                </div>
+                <div style="font-size:10px; text-align:right;">
+                  Baserat på<br />aktuella studier
+                </div>
+              </div>
+
+              <div class="hero-metrics">
+                <div class="metric">
+                  <div class="metric-label">Återkoppling uppåt</div>
+                  <div class="metric-value">+47%</div>
+                  <div class="metric-note">
+                    Team där chefer aktivt ber om ärlig feedback ser ofta kraftigt ökat engagemang.
+                  </div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Felrädsla</div>
+                  <div class="metric-value">−32%</div>
+                  <div class="metric-note">
+                    När misstag ses som lärande ökar både innovationstakt och ansvarstagande.
+                  </div>
+                </div>
+              </div>
+
+              <div class="hero-quote">
+                <strong>“Trygghet och ansvar är inte motsatser.”</strong><br />
+                De bästa organisationerna lyckas kombinera höga förväntningar med hög omsorg.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Tjänster -->
+      <section class="section" id="tjanster">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Tjänster</h2>
+            <p class="section-subtitle">
+              Upplägg som går att anpassa efter er vardag – oavsett om ni är ett mindre team eller en större organisation.
+            </p>
+          </div>
+          <div class="chips">
+            <span class="chip">Forskning + praktik</span>
+            <span class="chip">Psykologisk trygghet</span>
+            <span class="chip">Medarbetarskap</span>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-label">Workshop</div>
+            <h3 class="card-title">Bygg psykologisk trygghet på riktigt</h3>
+            <p class="card-text">
+              En praktisk halv- eller heldag där vi går från begrepp till konkret beteende: vad ni ska börja, sluta och fortsätta göra i vardagen.
+            </p>
+            <div class="card-meta">
+              Passar: Ledningsgrupper & team som vill öka öppenhet, mod och ansvar.
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-label">Föreläsning</div>
+            <h3 class="card-title">Engagemang bortom medarbetarundersökningar</h3>
+            <p class="card-text">
+              En ärlig föreläsning om kultur, ledarskap och medarbetarskap – med både forskning och berättelser från verkliga förändringsresor.
+            </p>
+            <div class="card-meta">
+              Format: 30–60 min + dialog/frågor.
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-label">Samtal</div>
+            <h3 class="card-title">Stöd till chefer i förändring</h3>
+            <p class="card-text">
+              Individuella samtal för dig som leder i motvind, står i ett skifte eller vill utveckla ditt ledarskap mot en VD-roll.
+            </p>
+            <div class="card-meta">
+              Fokus: Beslut, mod, gränsdragning och att leda med både hjärta och hjärna.
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Om mig -->
+      <section class="section" id="ommig">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Om mig</h2>
+            <p class="section-subtitle">
+              Här skriver du kort om din bakgrund, varför du brinner för ledarskap och vad som gör din approach unik.
+            </p>
+          </div>
+        </div>
+
+        <div class="about">
+          <div class="about-text">
+            <p>
+              Skriv några stycken om din resa: hur du kom in i ledarskap, vilken typ av kultur du tror på och vad du aldrig kompromissar med.
+            </p>
+            <p>
+              Knyt gärna an till konkreta erfarenheter: att ta över efter en kris, bygga tillit i ett skeptiskt team, eller förflytta fokus från kontroll
+              till ansvar.
+            </p>
+            <ul class="about-list">
+              <li><span>✓</span> Forskning som grund, inte som dekoration.</li>
+              <li><span>✓</span> Trygghet + tydliga krav – inte antingen eller.</li>
+              <li><span>✓</span> Alltid kopplat till er vardag, inte generella exempel.</li>
+            </ul>
+            <div class="about-highlight">
+              För mig handlar ledarskap om att göra det enkelt att göra rätt – inte att styra varje detalj.
+            </div>
+          </div>
+
+          <aside class="about-card">
+            <h3>Exempel på områden jag ofta jobbar med</h3>
+            <p>
+              Du kan justera listan nedan så den speglar de teman du vill vara känd för.
+            </p>
+            <div class="about-pill-row">
+              <div class="about-pill">Psykologisk trygghet i team</div>
+              <div class="about-pill">Ledarskap efter en kris</div>
+              <div class="about-pill">Engagemang & medarbetarskap</div>
+              <div class="about-pill">Feedback & svåra samtal</div>
+              <div class="about-pill">Förflyttning till VD-/C-nivå</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Kontakt -->
+      <section class="section" id="kontakt">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Kontakt</h2>
+            <p class="section-subtitle">
+              Fyll i formuläret eller maila mig direkt om du vill boka föreläsning, workshop eller bara ta ett första förutsättningslöst samtal.
+            </p>
+          </div>
+        </div>
+
+        <div class="contact">
+          <div class="contact-info">
+            <div class="contact-highlight">
+              Första steget är ofta ett enkelt samtal – utan förpliktelser.
+            </div>
+            <p>
+              Här kan du lägga in din mailadress, LinkedIn och eventuellt telefonnummer. Håll det personligt men tydligt.
+            </p>
+            <p>
+              <strong>E-post:</strong> <a href="mailto:du@dinadress.se">du@dinadress.se</a><br />
+              <strong>LinkedIn:</strong> <a href="#" target="_blank" rel="noopener">Din LinkedIn-profil</a>
+            </p>
+            <p class="contact-meta">
+              Jag återkommer normalt inom 1–2 arbetsdagar. Vill du boka ett specifikt datum – skriv det gärna i meddelandet.
+            </p>
+          </div>
+
+          <form class="contact-form">
+            <div class="contact-form-row">
+              <label for="namn">Namn</label>
+              <input type="text" id="namn" name="namn" placeholder="Ditt namn" required />
+            </div>
+            <div class="contact-form-row">
+              <label for="epost">E-post</label>
+              <input type="email" id="epost" name="epost" placeholder="din@epost.se" required />
+            </div>
+            <div class="contact-form-row">
+              <label for="organisation">Organisation (valfritt)</label>
+              <input type="text" id="organisation" name="organisation" placeholder="Företag / organisation" />
+            </div>
+            <div class="contact-form-row">
+              <label for="meddelande">Vad vill du utforska?</label>
+              <textarea id="meddelande" name="meddelande" placeholder="Beskriv kort ditt behov eller era utmaningar."></textarea>
+            </div>
+            <div class="contact-form-row">
+              <button type="submit" class="btn-primary">Skicka förfrågan</button>
+              <div>
+                <small>Detta formulär är just nu bara design – för att göra det aktivt behöver du koppla det till t.ex. ett mailformulär.</small>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; <span id="year"></span> Ditt varumärke inom ledarskap. Byggt på tillit, tydlighet och ansvar.
+    </footer>
+  </div>
+
+  <script>
+    // Sätter årtal automatiskt i footern
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
