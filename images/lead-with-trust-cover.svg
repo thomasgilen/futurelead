@@ -1,0 +1,22 @@
+<svg width="640" height="860" viewBox="0 0 640 860" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lead with Trust e-bok omslag">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f06ea9" />
+      <stop offset="55%" stop-color="#ffb36b" />
+      <stop offset="100%" stop-color="#ffe9d7" />
+    </linearGradient>
+  </defs>
+  <rect width="640" height="860" rx="48" fill="url(#bg)" />
+  <g fill="#fff" font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif" text-anchor="middle">
+    <text x="320" y="250" font-size="34" font-weight="600" opacity="0.9">Lead with Trust</text>
+    <text x="320" y="320" font-size="20" opacity="0.85">Psykologisk trygghet i praktiken</text>
+  </g>
+  <g fill="#ffffff" opacity="0.25">
+    <circle cx="120" cy="640" r="90" />
+    <circle cx="520" cy="640" r="70" />
+    <circle cx="320" cy="520" r="110" />
+  </g>
+  <text x="320" y="720" fill="#fff" font-size="18" font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif" text-anchor="middle" opacity="0.9">
+    Thomas Burénius
+  </text>
+</svg>
