@@ -1,8 +1,10 @@
+import { getVercelOidcToken } from '@vercel/oidc';
+
 const MAX_BYTES = 3 * 1024 * 1024;
 
 const extractionPrompt = `Du är Never Overpays svenska elräkningsanalysmotor. Läs dokumentet noggrant och returnera ENDAST giltig JSON, utan markdown.
 
-Extrahera endast sådant som faktiskt stöds av dokumentet. Gissa aldrig. Sätt null när något saknas eller är osäkert.
+Extrahera bara sådant som faktiskt stöds av dokumentet. Gissa aldrig. Sätt null när något saknas eller är osäkert.
 
 JSON-format:
 {
@@ -43,55 +45,52 @@ JSON-format:
 }
 
 Regler:
-- Alla priser per kWh ska anges i öre/kWh.
-- Separera elhandel från elnät. Elnät är inte konkurrensutsatt på samma sätt.
-- För Tibber-liknande fakturor: spotpris, fast påslag och rörliga inköpskostnader ska separeras om fakturan gör det.
-- Moms ska inte dubbelräknas.
-- confidence ska ligga 0–1 och spegla hur tydligt uppgiften framgår.
-- evidence ska innehålla korta textbevis för centrala extraktioner, men inga personnummer, bankgiron, OCR-nummer eller fullständiga adresser.
+- Alla priser per kWh ska anges i öre/kWh oavsett om fakturan visar kr/kWh eller öre/kWh.
+- Separera elhandel från elnät.
+- För Tibber-liknande fakturor: läs spotpris, fast påslag, rörliga kostnader, månadsavgift och moms separat när de finns.
+- Om en rad anger exempelvis 683,44 kWh x 0,5929 kr/kWh = 405,20 kr ska spotPriceOrePerKwh bli 59,29.
+- Moms får inte dubbelräknas.
+- confidence ska ligga 0–1.
+- evidence ska innehålla korta textbevis för centrala extraktioner men aldrig personnummer, OCR-nummer, bankgiro eller fullständiga adresser.
 - Om dokumentet inte är en svensk elräkning, lägg en tydlig varning i warnings.`;
 
 function json(res, status, body) {
   res.status(status).setHeader('Content-Type', 'application/json; charset=utf-8');
   res.setHeader('Cache-Control', 'no-store');
-  res.setHeader('Access-Control-Allow-Origin', '*');
   return res.end(JSON.stringify(body));
 }
 
 function extractText(result) {
   if (typeof result?.output_text === 'string') return result.output_text;
-  const messages = Array.isArray(result?.output) ? result.output : [];
-  for (const item of messages) {
-    if (item?.type !== 'message' || !Array.isArray(item.content)) continue;
-    for (const part of item.content) {
-      if (typeof part?.text === 'string') return part.text;
-    }
+  for (const item of result?.output || []) {
+    if (item?.type !== 'message') continue;
+    for (const part of item.content || []) if (typeof part?.text === 'string') return part.text;
   }
   return null;
 }
 
-export default async function handler(req, res) {
-  if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    return res.status(204).end();
+async function getGatewayToken() {
+  if (process.env.AI_GATEWAY_API_KEY) return process.env.AI_GATEWAY_API_KEY;
+  try {
+    const oidc = await getVercelOidcToken();
+    if (oidc) return oidc;
+  } catch (error) {
+    console.error('OIDC token unavailable', error?.message || error);
   }
-  if (req.method !== 'POST') return json(res, 405, { error: 'method_not_allowed' });
+  return process.env.VERCEL_OIDC_TOKEN || null;
+}
 
+export default async function handler(req, res) {
+  if (req.method !== 'POST') return json(res, 405, { error: 'method_not_allowed' });
   try {
     const { fileName, mimeType, dataUrl } = req.body || {};
     if (!dataUrl || typeof dataUrl !== 'string') return json(res, 400, { error: 'missing_file' });
-    if (!/^data:(application\/pdf|image\/(png|jpeg|jpg|webp));base64,/.test(dataUrl)) {
-      return json(res, 400, { error: 'unsupported_file_type' });
-    }
-
+    if (!/^data:(application\/pdf|image\/(png|jpeg|jpg|webp));base64,/.test(dataUrl)) return json(res, 400, { error: 'unsupported_file_type' });
     const base64 = dataUrl.split(',')[1] || '';
-    const estimatedBytes = Math.floor(base64.length * 0.75);
-    if (estimatedBytes > MAX_BYTES) return json(res, 413, { error: 'file_too_large', maxBytes: MAX_BYTES });
+    if (Math.floor(base64.length * 0.75) > MAX_BYTES) return json(res, 413, { error: 'file_too_large' });
 
-    const token = process.env.AI_GATEWAY_API_KEY || process.env.VERCEL_OIDC_TOKEN;
-    if (!token) return json(res, 503, { error: 'ai_gateway_not_configured' });
+    const token = await getGatewayToken();
+    if (!token) return json(res, 503, { error: 'ai_auth_unavailable' });
 
     const isPdf = (mimeType || '').includes('pdf') || dataUrl.startsWith('data:application/pdf');
     const attachment = isPdf
@@ -100,50 +99,29 @@ export default async function handler(req, res) {
 
     const gatewayResponse = await fetch('https://ai-gateway.vercel.sh/v1/responses', {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'openai/gpt-5.6-sol',
-        input: [{
-          type: 'message',
-          role: 'user',
-          content: [
-            { type: 'input_text', text: extractionPrompt },
-            attachment
-          ]
-        }]
+        input: [{ type: 'message', role: 'user', content: [{ type: 'input_text', text: extractionPrompt }, attachment] }]
       })
     });
 
-    const raw = await gatewayResponse.json();
+    const raw = await gatewayResponse.json().catch(() => ({}));
     if (!gatewayResponse.ok) {
       console.error('AI Gateway error', gatewayResponse.status, raw?.error?.message || raw?.error || 'unknown');
-      return json(res, 502, { error: 'analysis_provider_error' });
+      return json(res, 502, { error: 'analysis_provider_error', providerStatus: gatewayResponse.status });
     }
 
     const text = extractText(raw);
     if (!text) return json(res, 502, { error: 'empty_analysis' });
-
     let analysis;
     try {
-      const cleaned = text.trim().replace(/^```json\s*/i, '').replace(/```$/i, '').trim();
-      analysis = JSON.parse(cleaned);
-    } catch (error) {
-      console.error('Invalid JSON from model');
+      analysis = JSON.parse(text.trim().replace(/^```json\s*/i, '').replace(/```$/i, '').trim());
+    } catch {
       return json(res, 502, { error: 'invalid_analysis_format' });
     }
 
-    return json(res, 200, {
-      ok: true,
-      analysis,
-      meta: {
-        model: 'openai/gpt-5.6-sol',
-        generatedAt: new Date().toISOString(),
-        live: true
-      }
-    });
+    return json(res, 200, { ok: true, analysis, meta: { live: true, auth: process.env.AI_GATEWAY_API_KEY ? 'api-key' : 'oidc', generatedAt: new Date().toISOString() } });
   } catch (error) {
     console.error('Analyze energy failed', error?.message || error);
     return json(res, 500, { error: 'analysis_failed' });
