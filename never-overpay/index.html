@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Never Overpay</title>
+  <meta name="description" content="Ladda upp en faktura. Se vad du kan spara. Betala aldrig mer än nödvändigt." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#">Never Overpay<span class="dot">.</span></a>
+      <span class="badge">Prototype</span>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Din AI-förhandlare</p>
+        <h1>Betala aldrig mer<br>än du behöver.</h1>
+        <p class="lead">Ladda upp en faktura eller ett avtal. Vi hittar onödiga kostnader och visar hur mycket du kan spara.</p>
+
+        <div class="savings-card" aria-label="Exempel på möjlig besparing">
+          <div>
+            <span class="muted">Möjlig besparing</span>
+            <strong>7 840 kr</strong>
+            <small>per år</small>
+          </div>
+          <div class="sparkline" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+      </section>
+
+      <section class="panel" id="uploadPanel">
+        <div class="step"><span>1</span> Lägg till en kostnad</div>
+        <label class="dropzone" id="dropzone" for="fileInput">
+          <input id="fileInput" type="file" accept="image/*,.pdf" hidden />
+          <div class="upload-icon">↑</div>
+          <strong>Ladda upp faktura eller avtal</strong>
+          <p>PDF, JPG eller PNG · max 10 MB</p>
+          <button type="button" class="secondary" id="chooseButton">Välj fil</button>
+        </label>
+        <div class="privacy-note">🔒 Dokumentet används bara för att analysera din kostnad.</div>
+      </section>
+
+      <section class="panel hidden" id="analysisPanel" aria-live="polite">
+        <div class="step"><span>2</span> Vi analyserar</div>
+        <div class="file-row">
+          <div class="file-icon">PDF</div>
+          <div><strong id="fileName">faktura.pdf</strong><p id="fileMeta">Redo att analyseras</p></div>
+        </div>
+        <div class="progress"><i id="progressBar"></i></div>
+        <p class="analysis-copy" id="analysisCopy">Läser leverantör, pris och avtalsvillkor…</p>
+      </section>
+
+      <section class="panel result hidden" id="resultPanel">
+        <div class="step success"><span>✓</span> Analysen är klar</div>
+        <div class="result-head">
+          <div>
+            <p class="muted">Nuvarande kostnad</p>
+            <h2>749 kr/mån</h2>
+          </div>
+          <div class="provider">Nuvarande<br><strong>leverantör</strong></div>
+        </div>
+        <div class="divider"></div>
+        <div class="saving-highlight">
+          <p>Vi tror att du kan spara</p>
+          <strong>3 600 kr</strong>
+          <span>per år</span>
+        </div>
+        <div class="offer-card">
+          <div><span class="offer-label">Bättre alternativ</span><strong>449 kr/mån</strong><small>Likvärdig tjänst · ingen bindningstid</small></div>
+          <span class="save-pill">−40%</span>
+        </div>
+        <button class="primary" id="fixButton">Sänk min kostnad</button>
+        <button class="text-button" id="restartButton">Analysera en annan faktura</button>
+      </section>
+
+      <section class="how">
+        <p class="eyebrow">Så fungerar det</p>
+        <div class="how-grid">
+          <article><b>01</b><h3>Skicka fakturan</h3><p>Vi läser pris, leverantör och villkor.</p></article>
+          <article><b>02</b><h3>Vi jämför</h3><p>Vi söker efter ett bättre alternativ.</p></article>
+          <article><b>03</b><h3>Du sparar</h3><p>Du väljer om du vill gå vidare.</p></article>
+        </div>
+      </section>
+    </main>
+
+    <footer>Never Overpay · Första MVP-prototypen</footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
