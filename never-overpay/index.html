@@ -13,166 +13,17 @@
 </head>
 <body>
   <div class="app-shell">
-    <header class="topbar">
-      <button class="brand-button" data-view="home" aria-label="Gå till startsidan">Never Overpay<span>.</span></button>
-      <nav class="desktop-nav" aria-label="Huvudmeny">
-        <button data-view="home">Översikt</button>
-        <button data-view="analyze">Analysera</button>
-        <button data-view="watch">Bevakning</button>
-      </nav>
-      <div class="avatar" aria-label="Profil">TB</div>
-    </header>
-
+    <header class="topbar"><button class="brand-button" data-view="home">Never Overpay<span>.</span></button><nav class="desktop-nav"><button data-view="home">Översikt</button><button data-view="analyze">Analysera</button><button data-view="watch">Bevakning</button></nav><div class="avatar">TB</div></header>
     <main>
-      <section class="view active" id="homeView">
-        <div class="welcome-grid">
-          <div>
-            <p class="eyebrow">Din kostnadsagent</p>
-            <h1>Pengar ska inte<br>läcka i onödan.</h1>
-            <p class="lead">Never Overpay förstår dina återkommande kostnader, visar vad som faktiskt går att påverka och håller koll åt dig när marknaden förändras.</p>
-            <button class="primary compact" data-view="analyze">Analysera en räkning</button>
-          </div>
-          <article class="hero-card">
-            <span class="label">Bevakad kostnad</span>
-            <strong>635 kr</strong>
-            <small>senaste elräkningen</small>
-            <div class="hero-status"><span></span> Elavtal under bevakning</div>
-          </article>
-        </div>
-
-        <section class="dashboard-section">
-          <div class="section-title-row">
-            <div><p class="eyebrow">Översikt</p><h2>Dina kostnader</h2></div>
-            <button class="text-link" data-view="analyze">+ Lägg till</button>
-          </div>
-          <div class="metrics-grid">
-            <article class="metric-card dark"><span>Bevakat värde</span><strong>7 620 kr</strong><small>beräknad elhandel / år*</small></article>
-            <article class="metric-card"><span>Identifierad besparing</span><strong>0 kr</strong><small>ingen verifierad besparing ännu</small></article>
-            <article class="metric-card"><span>Aktiva bevakningar</span><strong>1</strong><small>el</small></article>
-          </div>
-
-          <div class="cost-list">
-            <button class="cost-row" data-view="electricity">
-              <div class="cost-icon electricity">⚡</div>
-              <div class="cost-main"><strong>El</strong><span>Tibber · kvartspris</span></div>
-              <div class="status-pill good">Bevakas</div>
-              <div class="cost-price"><strong>635 kr</strong><span>juli</span></div>
-              <div class="chevron">›</div>
-            </button>
-            <button class="cost-row muted-row" data-view="analyze">
-              <div class="cost-icon">＋</div>
-              <div class="cost-main"><strong>Lägg till nästa kostnad</strong><span>Bredband, mobil eller försäkring kommer senare</span></div>
-              <div class="chevron">›</div>
-            </button>
-          </div>
-          <p class="fineprint">* Enkel årsprojektion från den uppladdade månaden. Detta är inte en prognos för faktisk årskostnad.</p>
-        </section>
-      </section>
-
-      <section class="view" id="analyzeView">
-        <div class="page-head"><button class="back" data-view="home">←</button><div><p class="eyebrow">Ny analys</p><h2>Vad betalar du för?</h2></div></div>
-        <div class="category-tabs" role="tablist">
-          <button class="category active">⚡ El</button><button class="category disabled" disabled>🌐 Bredband</button><button class="category disabled" disabled>📱 Mobil</button><button class="category disabled" disabled>🏠 Försäkring</button>
-        </div>
-
-        <section class="panel" id="uploadPanel">
-          <div class="step"><span>1</span><div><strong>Ladda upp elräkningen</strong><small>Vi använder uppgifterna för att förstå ditt avtal.</small></div></div>
-          <label class="dropzone" id="dropzone" for="fileInput">
-            <input id="fileInput" type="file" accept="image/*,.pdf" hidden />
-            <div class="upload-icon">↑</div>
-            <strong>Släpp fakturan här</strong>
-            <p>eller välj PDF, JPG eller PNG · max 10 MB</p>
-            <button type="button" class="secondary" id="chooseButton">Välj fil</button>
-          </label>
-          <button class="demo-link" id="demoButton">Använd testanalysen från Tibber-fakturan →</button>
-          <div class="privacy-note">🔒 MVP:n skickar inte filen vidare. I denna version visas analysen med vårt verifierade Tibber-testfall.</div>
-        </section>
-
-        <section class="panel hidden" id="analysisPanel" aria-live="polite">
-          <div class="step"><span>2</span><div><strong>Vi analyserar</strong><small>Identifierar kostnader och vad som går att påverka.</small></div></div>
-          <div class="file-row"><div class="file-icon">PDF</div><div><strong id="fileName">faktura.pdf</strong><p id="fileMeta">Redo</p></div></div>
-          <div class="analysis-checks">
-            <div class="check active" id="check1"><i></i><span>Leverantör och avtalsform</span></div>
-            <div class="check" id="check2"><i></i><span>Förbrukning och prisdelar</span></div>
-            <div class="check" id="check3"><i></i><span>Vad som går att konkurrensutsätta</span></div>
-          </div>
-          <div class="progress"><i id="progressBar"></i></div>
-          <p class="analysis-copy" id="analysisCopy">Läser elräkningen…</p>
-        </section>
-      </section>
-
-      <section class="view" id="electricityView">
-        <div class="page-head"><button class="back" data-view="home">←</button><div><p class="eyebrow">Elanalys</p><h2>Ditt elavtal</h2></div></div>
-
-        <div class="analysis-hero">
-          <div><div class="status-line"><span class="status-dot"></span> Analys klar</div><h3>Tibber · Kvartspris</h3><p>Juli 2026 · 683,44 kWh</p></div>
-          <div class="score"><span>Avtalsstatus</span><strong>Bra</strong><small>ingen verifierad anledning att byta ännu</small></div>
-        </div>
-
-        <div class="analysis-grid">
-          <section class="detail-card wide">
-            <div class="card-head"><div><span class="label">Din faktura</span><h3>635 kr</h3></div><div class="unit-price"><strong>92,91</strong><span>öre/kWh totalt</span></div></div>
-            <div class="bill-bars">
-              <div class="bill-line"><span>Spotpris</span><div><i style="width:64%"></i></div><strong>405,20 kr</strong></div>
-              <div class="bill-line"><span>Fast påslag</span><div><i style="width:7%"></i></div><strong>41,01 kr</strong></div>
-              <div class="bill-line"><span>Rörliga kostnader</span><div><i style="width:4%"></i></div><strong>22,42 kr</strong></div>
-              <div class="bill-line"><span>Månadsavgift</span><div><i style="width:6%"></i></div><strong>39,20 kr</strong></div>
-              <div class="bill-line"><span>Moms</span><div><i style="width:20%"></i></div><strong>126,95 kr</strong></div>
-            </div>
-          </section>
-
-          <section class="detail-card influence-card">
-            <span class="label">Det här kan du påverka</span>
-            <strong class="big-number">9,28</strong><span class="big-unit">öre/kWh</span>
-            <p>Fast påslag + rörliga kostnader.</p>
-            <div class="mini-divider"></div>
-            <strong>39,20 kr/mån</strong><p>Fast månadsavgift.</p>
-          </section>
-
-          <section class="detail-card info-card">
-            <span class="label">Det här kan du inte byta bort</span>
-            <h3>Spotpriset</h3><p>Marknadspriset är inte en unik Tibber-kostnad. Vi jämför därför främst påslag, avgifter, villkor och relevanta rabatter.</p>
-            <div class="network-note">Elnät: <strong>Vattenfall Eldistribution</strong><br><small>faktureras separat och jämförs inte som elhandel.</small></div>
-          </section>
-        </div>
-
-        <section class="decision-card">
-          <div class="decision-icon">✓</div>
-          <div><span class="label">Vår rekommendation just nu</span><h3>Behåll avtalet tills vi hittar något bättre.</h3><p>Vi har ännu ingen livekoppling till svenska avtalspriser och visar därför ingen påhittad besparing. När jämförelselagret är inkopplat visas endast verifierade alternativ.</p></div>
-        </section>
-
-        <section class="watch-card" id="watchCard">
-          <div><p class="eyebrow">Never Overpay Watch</p><h2>Låt oss hålla koll åt dig.</h2><p>Bevakningen sparas lokalt i den här MVP:n. När riktig marknadsdata kopplas in kan samma flöde användas för notifieringar vid ett bättre avtal.</p></div>
-          <button class="primary compact" id="watchButton">Bevaka mitt elavtal</button>
-        </section>
-        <button class="text-link centered" data-view="analyze">Analysera en annan räkning</button>
-      </section>
-
-      <section class="view" id="watchView">
-        <div class="page-head"><button class="back" data-view="home">←</button><div><p class="eyebrow">Bevakning</p><h2>Vi håller koll.</h2></div></div>
-        <div class="watch-overview">
-          <article class="watch-item">
-            <div class="cost-icon electricity">⚡</div>
-            <div><strong>Tibber · Kvartspris</strong><span>Senast analyserad: juli 2026</span></div>
-            <div class="status-pill good" id="watchStatus">Aktiv</div>
-          </article>
-          <article class="timeline-card">
-            <div class="timeline-dot active"></div><div><strong>Avtal analyserat</strong><span>Vi har identifierat prisdelarna i din faktura.</span></div>
-            <div class="timeline-dot"></div><div><strong>Marknadsjämförelse väntar</strong><span>Nästa produktsteg är live-data för svenska elavtal.</span></div>
-            <div class="timeline-dot"></div><div><strong>Automatisk notifiering</strong><span>Aktiveras när ett verifierat bättre alternativ hittas.</span></div>
-          </article>
-        </div>
-      </section>
+      <section class="view active" id="homeView"><div class="welcome-grid"><div><p class="eyebrow">Din kostnadsagent</p><h1>Pengar ska inte<br>läcka i onödan.</h1><p class="lead">Never Overpay förstår dina återkommande kostnader, visar vad som faktiskt går att påverka och håller koll åt dig när marknaden förändras.</p><button class="primary compact" data-view="analyze">Analysera en räkning</button></div><article class="hero-card"><span class="label">Bevakad kostnad</span><strong>635 kr</strong><small>senaste elräkningen</small><div class="hero-status"><span></span> Elavtal under bevakning</div></article></div><section class="dashboard-section"><div class="section-title-row"><div><p class="eyebrow">Översikt</p><h2>Dina kostnader</h2></div><button class="text-link" data-view="analyze">+ Lägg till</button></div><div class="metrics-grid"><article class="metric-card dark"><span>Bevakat värde</span><strong>7 620 kr</strong><small>beräknad elhandel / år*</small></article><article class="metric-card"><span>Identifierad besparing</span><strong>0 kr</strong><small>ingen verifierad besparing ännu</small></article><article class="metric-card"><span>Aktiva bevakningar</span><strong>1</strong><small>el</small></article></div><div class="cost-list"><button class="cost-row" data-view="electricity"><div class="cost-icon electricity">⚡</div><div class="cost-main"><strong>El</strong><span>Tibber · kvartspris</span></div><div class="status-pill good">Bevakas</div><div class="cost-price"><strong>635 kr</strong><span>juli</span></div><div class="chevron">›</div></button></div></section></section>
+      <section class="view" id="analyzeView"><div class="page-head"><button class="back" data-view="home">←</button><div><p class="eyebrow">Ny analys</p><h2>Vad betalar du för?</h2></div></div><section class="panel" id="uploadPanel"><div class="step"><span>1</span><div><strong>Ladda upp elräkningen</strong><small>PDF eller bild, max 3 MB.</small></div></div><label class="dropzone" id="dropzone" for="fileInput"><input id="fileInput" type="file" accept="image/*,.pdf" hidden /><div class="upload-icon">↑</div><strong>Släpp fakturan här</strong><p>eller välj PDF, JPG eller PNG</p><button type="button" class="secondary" id="chooseButton">Välj fil</button></label><button class="demo-link" id="demoButton">Använd testanalysen från Tibber-fakturan →</button><div class="privacy-note">🔒 Först försöker vi serveranalys. Om den är otillgänglig körs OCR lokalt i din webbläsare och dokumentet lämnar inte mobilen.</div></section><section class="panel hidden" id="analysisPanel"><div class="step"><span>2</span><div><strong>Vi analyserar</strong><small>Identifierar kostnader och villkor.</small></div></div><div class="file-row"><div class="file-icon">PDF</div><div><strong id="fileName">faktura.pdf</strong><p id="fileMeta">Redo</p></div></div><div class="analysis-checks"><div class="check active" id="check1"><i></i><span>Leverantör och avtalsform</span></div><div class="check" id="check2"><i></i><span>Förbrukning och prisdelar</span></div><div class="check" id="check3"><i></i><span>Vad som går att konkurrensutsätta</span></div></div><div class="progress"><i id="progressBar"></i></div><p class="analysis-copy" id="analysisCopy">Läser elräkningen…</p></section></section>
+      <section class="view" id="electricityView"><div class="page-head"><button class="back" data-view="home">←</button><div><p class="eyebrow">Elanalys</p><h2>Ditt elavtal</h2></div></div><div class="analysis-hero"><div><div class="status-line"><span class="status-dot"></span> Analys klar</div><h3>Tibber · Kvartspris</h3><p>2026-07 · 683,44 kWh</p></div><div class="score"><span>Avtalsstatus</span><strong>Test</strong><small>verifierat testfall</small></div></div><div class="analysis-grid"><section class="detail-card wide"><div class="card-head"><div><span class="label">Din faktura</span><h3>635 kr</h3></div><div class="unit-price"><strong>92,91</strong><span>öre/kWh totalt</span></div></div><div class="bill-bars"><div class="bill-line"><span>Spotpris</span><div><i style="width:64%"></i></div><strong>405,20 kr</strong></div><div class="bill-line"><span>Fast påslag</span><div><i style="width:7%"></i></div><strong>41,01 kr</strong></div><div class="bill-line"><span>Rörliga kostnader</span><div><i style="width:4%"></i></div><strong>22,42 kr</strong></div><div class="bill-line"><span>Månadsavgift</span><div><i style="width:6%"></i></div><strong>39,20 kr</strong></div><div class="bill-line"><span>Moms</span><div><i style="width:20%"></i></div><strong>126,95 kr</strong></div></div></section><section class="detail-card influence-card"><span class="label">Det här kan du påverka</span><strong class="big-number">9,28</strong><span class="big-unit">öre/kWh</span><p>Fast påslag + rörliga kostnader.</p><div class="mini-divider"></div><strong>39,20 kr/mån</strong><p>Fast månadsavgift.</p></section><section class="detail-card info-card"><span class="label">Det här kan du inte byta bort</span><h3>Spotpriset</h3><p>Vi jämför främst påslag, avgifter och villkor.</p><div class="network-note">Elnät: <strong>Vattenfall Eldistribution</strong><br><small>faktureras separat.</small></div></section></div><section class="decision-card"><div class="decision-icon">✓</div><div><span class="label">Nästa steg</span><h3>Fakturan är redo för marknadsjämförelse.</h3><p>Vi visar aldrig påhittade besparingar.</p></div></section><section class="watch-card" id="watchCard"><div><p class="eyebrow">Never Overpay Watch</p><h2>Låt oss hålla koll åt dig.</h2><p>Aktivera bevakning för ditt elavtal.</p></div><button class="primary compact" id="watchButton">Bevaka mitt elavtal</button></section></section>
+      <section class="view" id="watchView"><div class="page-head"><button class="back" data-view="home">←</button><div><p class="eyebrow">Bevakning</p><h2>Vi håller koll.</h2></div></div><div class="watch-overview"><article class="watch-item"><div class="cost-icon electricity">⚡</div><div><strong>Ditt elavtal</strong><span>Senast analyserad faktura</span></div><div class="status-pill good" id="watchStatus">Aktiv</div></article></div></section>
     </main>
-
-    <nav class="mobile-nav" aria-label="Mobilmeny">
-      <button data-view="home"><span>⌂</span>Översikt</button>
-      <button data-view="analyze"><span>＋</span>Analysera</button>
-      <button data-view="watch"><span>◉</span>Bevakning</button>
-    </nav>
-    <footer>Never Overpay · MVP 0.2 · Ingen livejämförelse eller automatisk avtalsväxling ännu.</footer>
+    <nav class="mobile-nav"><button data-view="home"><span>⌂</span>Översikt</button><button data-view="analyze"><span>＋</span>Analysera</button><button data-view="watch"><span>◉</span>Bevakning</button></nav>
   </div>
-  <script src="energy-model.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs" type="module"></script>
+  <script>window.addEventListener('DOMContentLoaded',()=>{import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs').then(m=>{window.pdfjsLib=m;m.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';}).catch(()=>{});});</script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="energy-model.js"></script><script src="local-analyzer.js"></script><script src="app.js"></script>
+</body></html>
